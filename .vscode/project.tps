@@ -1,0 +1,113 @@
+{
+  "orderNumber": 6814024,
+  "outputDirectory": "OUT",
+  "maxNoTraces": 30,
+  "maxFunctionCallsInExpression": 4,
+  "imageDirectory": "HMI/Media",
+  "projectName": "Margee Project",
+  "ioParameters": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [],
+    [],
+    []
+  ],
+  "communicationSettings": {
+    "in": [
+      {
+        "name": "toggleExecute",
+        "bitOffset": "0",
+        "bitLen": "1"
+      }
+    ],
+    "out": [
+      {
+        "name": "reg1",
+        "bitOffset": "0",
+        "bitLen": "32"
+      },
+      {
+        "name": "reg2",
+        "bitOffset": "32",
+        "bitLen": "16"
+      },
+      {
+        "name": "reg3",
+        "bitOffset": "32 + 16",
+        "bitLen": "16"
+      },
+      {
+        "name": "executeState",
+        "bitOffset": "32 + 16 + 16",
+        "bitLen": "1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+HMI_SCREEN("⁉️ Information");       
+    HMI_GRID("25px 1fr 25px", "25px min-content 1fr");
+        HMI_CONTAINER(2, 1, 2, 1); 
+            HMI_TEXT_H1("MARGEE.");
+        END_HMI_CONTAINER
+        HMI_CONTAINER(2, 1, 3, 1);  
+            HMI_TEXT_H3("MARGEE, what is it?"); 
+            HMI_TEXT_P("Like Argee, a user can program Turck FLC capable devices with MARGEE."); 
+            HMI_TEXT_P("Unlike Argee, this can be done in directly in visual studio code!"); 
+            HMI_TEXT_P("<br>"); 
+            HMI_TEXT_P("This webpage you are viewing, has been made completely in MARGEE."); 
+            HMI_TEXT_P("<br>"); 
+            HMI_TEXT_P("Because MARGEE runs in Visual Studio Code, the world most popular text editor!"); 
+            HMI_TEXT_P("The language to program the Runtime is heavily based on Structured Text, therefore familiar to get into."); 
+            HMI_TEXT_P("The HMI is using a custom language, Its elements are created in plain JavaScript. Users can change, and/or add change these elements however they would like!"); 
+            HMI_TEXT_P("We can even debug the runtime straight from inside Visual Studio Code! Along with a runtime debugger we can also debug our HMI JavaScript elements in Visual Studio Code."); 
+            HMI_TEXT_P("<br>"); 
+            HMI_TEXT_H3("Sounds good! How can I use it?"); 
+            HMI_TEXT_P("You can download MARGEE straight from the Visual Studio Code Marketplace."); 
+            HMI_TEXT_P("<br>"); 
+            HMI_TEXT_P("Visual Studio Code itself can be downloaded from: https://code.visualstudio.com/download.");  
+        END_HMI_CONTAINER
+    END_HMI_GRID
+END_HMI_SCREEN    

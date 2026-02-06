@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "MARGEE",
+      "request": "launch",
+      "name": "Default debugger",
+      "IP": "192.168.10.10",
+      "Password": "password",
+      "StartDelay": 20,
+      "RefreshInterval": 250, 
+      "AttachVisualization": true,
+      "AttachVisualizationTo": "chrome"
+    }, 
+    {
+      "type": "chrome",
+      "request": "launch", 
+      "name": "Visualisation Preview",
+      "url": "http://localhost:${config:MARGEE.Port}",
+      "preLaunchTask": "Start MARGEE Live Preview"
+    }
+  ]
+}

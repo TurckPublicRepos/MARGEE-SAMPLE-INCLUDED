@@ -1,0 +1,180 @@
+:root {
+    color-scheme: dark;
+    
+    --color-main-normal: #ffcc00;
+    --color-main-light: #ffdd4f; 
+    --color-main-lighter: #ffeca9;
+    --color-main-lightest: #fff8e6;
+
+    --color-secondary-normal: #802245;
+    --color-secondary-light: #8d4e60;
+    --color-secondary-lighter: #c2aeb2; 
+    --color-secondary-lightest: #f0ecec;
+
+    --color-light-normal: #000000;
+    --color-light-dark: #17171a;
+    --color-light-darker: #232324;
+    --color-light-darkest: #e6e7e8;
+
+    --color-dark-normal: #ffffff;
+    --color-dark-light: #f5f5f5;
+    --color-dark-lighter: #a7a9ac;
+    --color-dark-lightest: #58595b;
+    
+    --color-black: #17171a;
+    --color-white: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: normal 13px/1.4 Helvetica,Helvetica Neue,Arial,sans-serif;
+    min-height: 0;
+}
+ 
+body { 
+    min-height: 100%;
+    background-color: var(--color-light-dark);
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+h1 strong {
+    font-size: 40px;
+    font-weight: bold; 
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+    font-size: 16px;
+    font-weight: 500;
+    
+    background-color: var(--color-main-normal);
+    color: black;
+    font-size: 16px;
+    padding: 5 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button:hover {
+  background-color: var(--color-main-light);
+  color: white;
+}
+
+input {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    height: 18px;
+}
+
+code, .code, .code > * {
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', 'Courier New', monospace;
+    font-size: 15px;
+    color: var(--color-dark-normal);
+    background-color: var(--color-light-darker);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.text-align-left { text-align: left; }
+.text-align-center { text-align: center; }
+.text-align-right { text-align: right; }
+.hidden { display: none !important; }
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.height-full { height: 100%; }
+.width-full { width: 100%; }
+
+.margin-large { margin: 25px; }
+.margin { margin: 15px; }
+.margin-medium { margin: 10px; }
+.margin-small { margin: 5px; }
+.margin-none { margin: 0; }
+
+.margin-top-large { margin-top: 25px; }
+.margin-top { margin-top: 15px; }
+.margin-top-medium { margin-top: 10px; }
+.margin-top-small { margin-top: 5px; }
+.margin-top-none { margin-top: 0; }
+
+.margin-right-large { margin-right: 25px; }
+.margin-right { margin-right: 15px; }
+.margin-right-medium { margin-right: 10px; }
+.margin-right-small { margin-right: 5px; }
+.margin-right-none { margin-right: 0; }
+
+.margin-bottom-large { margin-bottom: 25px; }
+.margin-bottom { margin-bottom: 15px; }
+.margin-bottom-medium { margin-bottom: 10px; }
+.margin-bottom-small { margin-bottom: 5px; }
+.margin-bottom-none { margin-bottom: 0; }
+
+.margin-left-large { margin-left: 25px; }
+.margin-left { margin-left: 15px; }
+.margin-left-medium { margin-left: 10px; }
+.margin-left-small { margin-left: 5px; }
+.margin-left-none { margin-left: 0; }
+
+.padding-large { padding: 25px; }
+.padding { padding: 15px; }
+.padding-medium { padding: 10px; }
+.padding-small { padding: 5px; }
+.padding-none { padding: 0; }
+
+.padding-top-large { padding-top: 25px; }
+.padding-top { padding-top: 15px; }
+.padding-top-medium { padding-top: 10px; }
+.padding-top-small { padding-top: 5px; }
+.padding-top-none { padding-top: 0; }
+
+.padding-right-large { padding-right: 25px; }
+.padding-right { padding-right: 15px; }
+.padding-right-medium { padding-right: 10px; }
+.padding-right-small { padding-right: 5px; }
+.padding-right-none { padding-right: 0; }
+
+.padding-bottom-large { padding-bottom: 25px; }
+.padding-bottom { padding-bottom: 15px; }
+.padding-bottom-medium { padding-bottom: 10px; }
+.padding-bottom-small { padding-bottom: 5px; }
+.padding-bottom-none { padding-bottom: 0; }
+
+.padding-left-large { padding-left: 25px; }
+.padding-left { padding-left: 15px; }
+.padding-left-medium { padding-left: 10px; }
+.padding-left-small { padding-left: 5px; }
+.padding-left-none { padding-left: 0; }
+
+.z-index-top { z-index: 99; }
+.z-index-bottom { z-index: 1; }
