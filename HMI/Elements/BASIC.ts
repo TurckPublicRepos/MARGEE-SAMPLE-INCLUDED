@@ -5,10 +5,9 @@ export class HMI_TEXT_P implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     text: ARG_CONST_ARRAY_USINT,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
     }
   }
@@ -19,10 +18,9 @@ export class HMI_TEXT_H1 implements RUNTIME_ELEMENT {
   readonly root = this.h1;
 
   render(
-    firstCall: boolean,
     text: ARG_CONST_ARRAY_USINT,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.h1.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
     }
   }
@@ -33,10 +31,9 @@ export class HMI_TEXT_H2 implements RUNTIME_ELEMENT {
   readonly root = this.h2;
 
   render(
-    firstCall: boolean,
     text: ARG_CONST_ARRAY_USINT,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.h2.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
     }
   }
@@ -47,10 +44,9 @@ export class HMI_TEXT_H3 implements RUNTIME_ELEMENT {
   readonly root = this.h3;
 
   render(
-    firstCall: boolean,
     text: ARG_CONST_ARRAY_USINT,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.h3.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
     }
   }
@@ -61,10 +57,9 @@ export class HMI_IMAGE implements RUNTIME_ELEMENT {
   readonly root = this.img;
 
   render(
-    firstCall: boolean,
     src: ARG_CONST_ARRAY_USINT,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.img.src = HMI_RUNTIME.getImageStr(HMI_RUNTIME.get(src, 'formattedString')) ?? '';
     }
   }
@@ -75,7 +70,6 @@ export class HMI_DISPLAY_VALUE implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     value: ARG_VAL_NUMERICAL,
     before: ARG_CONST_ARRAY_USINT | undefined,
     after: ARG_CONST_ARRAY_USINT | undefined,
@@ -96,7 +90,6 @@ export class HMI_DISPLAY_ENUM implements RUNTIME_ELEMENT {
   readonly root = this.p;
   
   render(
-    firstCall: boolean,
     value: ARG_VAL_NUMERICAL,
     strings: ARG_CONST_ARRAY_USINT,
     numbers: ARG_CONST_ARRAY_UDINT,
@@ -120,7 +113,6 @@ export class HMI_DISPLAY_STRING implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     value: ARG_VAL_ARRAY_USINT | ARG_CONST_ARRAY_USINT,
     before: ARG_CONST_ARRAY_USINT | undefined,
     after: ARG_CONST_ARRAY_USINT | undefined,
@@ -138,12 +130,11 @@ export class HMI_INPUT_BUTTON implements RUNTIME_ELEMENT {
   readonly root = this.button;
 
   render(
-    firstCall: boolean,
     value: ARG_VAL_SIGNED | ARG_VAL_UNSIGNED,
     text: ARG_CONST_ARRAY_USINT | undefined,
     setValue: ARG_CONST_SIGNED | ARG_CONST_UNSIGNED | undefined,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.button.innerHTML = HMI_RUNTIME.get(text, 'formattedString') ?? '';;
       this.button.addEventListener('click', () => HMI_RUNTIME.set(value, HMI_RUNTIME.get(setValue) ?? 1));
     }
@@ -161,12 +152,11 @@ export class HMI_INPUT_NUMBER implements RUNTIME_ELEMENT {
   }
 
   render(
-    firstCall: boolean,
     value: ARG_VAL_NUMERICAL,
     before: ARG_CONST_ARRAY_USINT | undefined,
     after: ARG_CONST_ARRAY_USINT | undefined,
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.Before.innerHTML = HMI_RUNTIME.get(before, 'formattedString') ?? '';
       this.After.innerHTML = HMI_RUNTIME.get(after, 'formattedString') ?? ''; 
 
@@ -198,18 +188,18 @@ export class HMI_USER_MANAGEMENT_SIGN_IN implements RUNTIME_ELEMENT {
         this.signInBtn.innerHTML = 'Sign In Failed';
         setTimeout(() => this.signInBtn.innerHTML = 'Sign In', 2000);
       }
-      this.render(false);
+      this.render();
     });
 
     this.fieldSignedIn.classList.add('signed-in-field');
     this.signOutBtn.innerHTML = 'Sign Out';
     this.signOutBtn.addEventListener('click', () => {
       HMI_RUNTIME.signOut();
-      this.render(false);
+      this.render();
     });
   }
  
-  render(firstCall: boolean): void {
+  render(): void {
     const currentUser = HMI_RUNTIME.currentUser();
 
     if (currentUser) { 
@@ -247,7 +237,6 @@ export class HMI_USER_MANAGEMENT_CHANGE_PASSWORD implements RUNTIME_ELEMENT {
   }
 
   render(
-    firstCall: boolean,
     id: ARG_CONST_UDINT
   ): void {
     this.changeBtn.addEventListener('click', async () => {

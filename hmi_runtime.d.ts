@@ -71,9 +71,10 @@ declare global {
     export abstract class RUNTIME_ELEMENT {
         abstract readonly root: HTMLElement;
         content?: HTMLElement;
-        abstract render(firstCall: boolean, ...args: (ARG | undefined)[]): void;
+        abstract render(...args: (ARG | undefined)[]): void;
     }
     class runtime {
+        get isRendered(): boolean;
         readGOM(uid: number, inst: number): Promise<Uint8Array | undefined>;
         readGOMs(objs: {
             uid: number;
@@ -172,42 +173,44 @@ declare global {
             reason: string;
         }>;
         currentUser(): number;
-        parseSignedIntegerConstant(str: string, bitLen: number): number;
-        parseUnsignedIntegerConstant(str: string, bitLen: number): number;
-        parseRealConstant(str: string): number;
-        toBytes(num: number, type: 'REAL' | 'DINT' | 'INT' | 'SINT' | 'UDINT' | 'UINT' | 'USINT', litteEndian?: boolean): Uint8Array;
-        toBytesReal(num: number, litteEndian?: boolean): Uint8Array;
-        toBytesInt32(num: number, litteEndian?: boolean): Uint8Array;
-        toBytesInt16(num: number, litteEndian?: boolean): Uint8Array;
-        toBytesInt8(num: number): Uint8Array;
-        toBytesUint32(num: number, litteEndian?: boolean): Uint8Array;
-        toBytesUint16(num: number, litteEndian?: boolean): Uint8Array;
-        toBytesUint8(num: number): Uint8Array;
-        toBytesRealArray(arr: number[], litteEndian?: boolean): Uint8Array;
-        toBytesInt32Array(arr: number[], litteEndian?: boolean): Uint8Array;
-        toBytesInt16Array(arr: number[], litteEndian?: boolean): Uint8Array;
-        toBytesInt8Array(arr: number[]): Uint8Array;
-        toBytesUint32Array(arr: number[], litteEndian?: boolean): Uint8Array;
-        toBytesUint16Array(arr: number[], litteEndian?: boolean): Uint8Array;
-        toBytesUint8Array(arr: number[]): Uint8Array;
-        fromBytesReal(arr: Uint8Array, litteEndian?: boolean): number;
-        fromBytesInt32(arr: Uint8Array, litteEndian?: boolean): number;
-        fromBytesInt16(arr: Uint8Array, litteEndian?: boolean): number;
-        fromBytesInt8(arr: Uint8Array): number;
-        fromBytesUint32(arr: Uint8Array, litteEndian?: boolean): number;
-        fromBytesUint16(arr: Uint8Array, litteEndian?: boolean): number;
-        fromBytesUint8(arr: Uint8Array): number;
-        fromBytesRealArray(arr: Uint8Array, litteEndian?: boolean): number[];
-        fromBytesInt32Array(arr: Uint8Array, litteEndian?: boolean): number[];
-        fromBytesInt16Array(arr: Uint8Array, litteEndian?: boolean): number[];
-        fromBytesInt8Array(arr: Uint8Array): number[];
-        fromBytesUint32Array(arr: Uint8Array, litteEndian?: boolean): number[];
-        fromBytesUint16Array(arr: Uint8Array, litteEndian?: boolean): number[];
-        fromBytesUint8Array(arr: Uint8Array): number[];
-        arrToString(arr: Uint8Array | number[]): string;
-        stringToArr(str: string): Uint8Array;
     }
     export let HMI_RUNTIME: runtime;
+    export const bufferToString: (buffer: Uint8Array | number[], terminateOnNull: boolean) => string;
+    export const stringToBuffer: (str: string) => Uint8Array<ArrayBufferLike>;
+    export const fromBytesFloat: (arr: Uint8Array, litteEndian?: boolean) => number;
+    export const fromBytesInt16: (arr: Uint8Array, litteEndian?: boolean) => number;
+    export const fromBytesInt32: (arr: Uint8Array, litteEndian?: boolean) => number;
+    export const fromBytesInt8: (arr: Uint8Array) => number;
+    export const fromBytesUint16: (arr: Uint8Array, litteEndian?: boolean) => number;
+    export const fromBytesUint32: (arr: Uint8Array, litteEndian?: boolean) => number;
+    export const toBytesFloat: (num: number, littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesInt16: (num: number, littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesInt32: (num: number, littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesInt8: (num: number) => Uint8Array<ArrayBufferLike>;
+    export const toBytesUint16: (num: number, littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesUint32: (num: number, littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesUint8: (num: number) => Uint8Array<ArrayBufferLike>;
+    export const fromBytesFloatArray: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const fromBytesInt16Array: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const fromBytesInt32Array: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const fromBytesInt8Array: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const fromBytesUint16Array: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const fromBytesUint32Array: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const fromBytesUint8Array: (arr: Uint8Array, litteEndian?: boolean) => number[];
+    export const toBytesFloatArray: (arr: number[], littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesInt16Array: (arr: number[], littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesInt32Array: (arr: number[], littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesInt8Array: (arr: number[]) => Uint8Array<ArrayBufferLike>;
+    export const toBytesUint16Array: (arr: number[], littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesUint32Array: (arr: number[], littleEndian?: boolean) => Uint8Array<ArrayBufferLike>;
+    export const toBytesUint8Array: (arr: number[]) => Uint8Array<ArrayBufferLike>;
+    export const compareBuffers: (a: Uint8Array, b: Uint8Array) => boolean;
+    export const fromBytesUint8: (arr: Uint8Array) => number;
+    export const int16ToBigEndian: (value: number) => number;
+    export const int16ToLittleEndian: (value: number) => number;
+    export const int32ToBigEndian: (value: number) => number;
+    export const int32ToLittleEndian: (value: number) => number;
+    export const concatBuffers: (...buffers: Uint8Array[]) => Uint8Array<ArrayBuffer>;
 }
 
 export {};

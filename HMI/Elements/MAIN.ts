@@ -26,10 +26,9 @@ export class HMI_SCREEN implements RUNTIME_ELEMENT {
   }
 
   render(
-    firstCall: boolean,
     name: ARG_CONST_ARRAY_USINT
   ): void {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       const _name = HMI_RUNTIME.get(name, 'formattedString');
 
       this.headerText.innerHTML = _name;
@@ -48,11 +47,10 @@ export class HMI_GRID implements RUNTIME_ELEMENT {
   readonly root = document.createElement('div');
 
   render(
-    firstCall: boolean,
     columnSizes: ARG_CONST_ARRAY_USINT | undefined,
     rowSizes: ARG_CONST_ARRAY_USINT | undefined,
   ) {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.root.style.gridTemplateColumns = HMI_RUNTIME.get(columnSizes, 'string') ?? 'auto';
       this.root.style.gridTemplateRows = HMI_RUNTIME.get(rowSizes, 'string') ?? 'auto';
     }
@@ -63,7 +61,6 @@ export class HMI_CONTAINER implements RUNTIME_ELEMENT {
   readonly root = document.createElement('div');
 
   render(
-    firstCall: boolean,
     column: ARG_CONST_NUMERICAL | undefined,
     columnSpan: ARG_CONST_NUMERICAL | undefined,
     row: ARG_CONST_NUMERICAL | undefined,
@@ -71,7 +68,7 @@ export class HMI_CONTAINER implements RUNTIME_ELEMENT {
     visible: ARG_VAL_NUMERICAL | ARG_CONST_NUMERICAL | undefined,
     acceptedUsers: ARG_CONST_ARRAY_NUMERICAL | undefined,
   ) {
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.root.style.gridColumnStart = `${(HMI_RUNTIME.get(column) ?? 0)}`;
       this.root.style.gridColumnEnd = `${(HMI_RUNTIME.get(column) ?? 0) + (HMI_RUNTIME.get(columnSpan) ?? 1)}`;
       this.root.style.gridRowStart = `${(HMI_RUNTIME.get(row) ?? 0)}`;

@@ -4,7 +4,6 @@ export class HMI_GAUGE_CIRCLE implements RUNTIME_ELEMENT {
   readonly root = document.createElement('div');
 
   render(
-    firstCall: boolean,
     title: ARG_CONST_ARRAY_USINT,
     value: ARG_VAL_NUMERICAL,
     min: ARG_CONST_NUMERICAL,
@@ -48,7 +47,6 @@ export class HMI_GAUGE_BAR implements RUNTIME_ELEMENT {
   readonly root = document.createElement('div');
 
   render(
-    firstCall: boolean,
     title: ARG_CONST_ARRAY_USINT,
     value: ARG_VAL_NUMERICAL,
     min: ARG_CONST_NUMERICAL,

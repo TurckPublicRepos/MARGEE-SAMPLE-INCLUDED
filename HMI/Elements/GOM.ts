@@ -5,7 +5,6 @@ export class HMI_DISPLAY_GOM_STRING implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
     txtBefore: ARG_CONST_ARRAY_USINT | undefined,
@@ -16,11 +15,11 @@ export class HMI_DISPLAY_GOM_STRING implements RUNTIME_ELEMENT {
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
       HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${HMI_RUNTIME.arrToString(value)}${_txtAfter}`;
+        this.p.innerHTML = `${_txtBefore}${bufferToString(value, true)}${_txtAfter}`;
       });
     }
   }
@@ -31,7 +30,6 @@ export class HMI_DISPLAY_GOM_INT implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
     txtBefore: ARG_CONST_ARRAY_USINT | undefined,
@@ -42,11 +40,11 @@ export class HMI_DISPLAY_GOM_INT implements RUNTIME_ELEMENT {
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
       HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${HMI_RUNTIME.fromBytesInt32(value)}${_txtAfter}`;
+        this.p.innerHTML = `${_txtBefore}${fromBytesInt32(value)}${_txtAfter}`;
       });
     }
   }
@@ -56,7 +54,6 @@ export class HMI_DISPLAY_GOM_UINT implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
     txtBefore: ARG_CONST_ARRAY_USINT | undefined,
@@ -67,11 +64,11 @@ export class HMI_DISPLAY_GOM_UINT implements RUNTIME_ELEMENT {
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
       HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${HMI_RUNTIME.fromBytesUint32(value)}${_txtAfter}`;
+        this.p.innerHTML = `${_txtBefore}${fromBytesUint32(value)}${_txtAfter}`;
       });
     }
   }
@@ -82,7 +79,6 @@ export class HMI_DISPLAY_GOM_REAL implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
     txtBefore: ARG_CONST_ARRAY_USINT | undefined,
@@ -93,11 +89,11 @@ export class HMI_DISPLAY_GOM_REAL implements RUNTIME_ELEMENT {
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
       HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${HMI_RUNTIME.fromBytesReal(value)}${_txtAfter}`;
+        this.p.innerHTML = `${_txtBefore}${fromBytesFloat(value)}${_txtAfter}`;
       });
     }
   }
@@ -108,7 +104,6 @@ export class HMI_DISPLAY_GOM_VERSION implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
     txtBefore: ARG_CONST_ARRAY_USINT | undefined,
@@ -119,7 +114,7 @@ export class HMI_DISPLAY_GOM_VERSION implements RUNTIME_ELEMENT {
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
       HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
@@ -134,7 +129,6 @@ export class HMI_DISPLAY_GOM_MAC implements RUNTIME_ELEMENT {
   readonly root = this.p;
 
   render(
-    firstCall: boolean,
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
     txtBefore: ARG_CONST_ARRAY_USINT | undefined,
@@ -145,7 +139,7 @@ export class HMI_DISPLAY_GOM_MAC implements RUNTIME_ELEMENT {
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (firstCall) {
+    if (!HMI_RUNTIME.isRendered) {
       this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
       HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
