@@ -1,79 +1,67 @@
 import '../../hmi_runtime'; 
 
-export class HMI_TEXT_P implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+export class HMI_TEXT_P implements RUNTIME_ELEMENT { 
+  readonly root = create('p');
 
-  render(
-    text: ARG_CONST_ARRAY_USINT,
-  ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
-    }
+  /**
+   * This displays text.
+   * @param text The text to display.
+   */
+  render(text: ARG_CONST_ARRAY_USINT): void {  
+    if (HMI_RUNTIME.isRendered) return;  
+
+    this.root.innerHTML = HMI_RUNTIME.get(text, 'formattedString'); 
   }
-}
-
+} 
+ 
 export class HMI_TEXT_H1 implements RUNTIME_ELEMENT { 
-  readonly h1 = document.createElement('h1');
-  readonly root = this.h1;
+  readonly root = create('h1');
+ 
+  render(text: ARG_CONST_ARRAY_USINT): void {
+    if (HMI_RUNTIME.isRendered) return; 
 
-  render(
-    text: ARG_CONST_ARRAY_USINT,
-  ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      this.h1.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
-    }
-  }
+    this.root.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
+  } 
 }
 
 export class HMI_TEXT_H2 implements RUNTIME_ELEMENT {
-  readonly h2 = document.createElement('h2');
-  readonly root = this.h2;
+  readonly root = create('h2');
 
-  render(
-    text: ARG_CONST_ARRAY_USINT,
-  ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      this.h2.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
-    }
+  render(text: ARG_CONST_ARRAY_USINT): void {
+    if (HMI_RUNTIME.isRendered) return;
+
+    this.root.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
   }
 }
 
 export class HMI_TEXT_H3 implements RUNTIME_ELEMENT {
-  readonly h3 = document.createElement('h3');
-  readonly root = this.h3;
+  readonly root = create('h3');
 
-  render(
-    text: ARG_CONST_ARRAY_USINT,
-  ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      this.h3.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
-    }
+  render(text: ARG_CONST_ARRAY_USINT): void {
+    if (HMI_RUNTIME.isRendered) return;
+
+    this.root.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
   }
 }
 
 export class HMI_IMAGE implements RUNTIME_ELEMENT {
-  readonly img = document.createElement('img');
-  readonly root = this.img;
+  readonly root = create('img');
 
-  render(
-    src: ARG_CONST_ARRAY_USINT,
-  ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      this.img.src = HMI_RUNTIME.getImageStr(HMI_RUNTIME.get(src, 'formattedString')) ?? '';
-    }
+  render(src: ARG_CONST_ARRAY_USINT): void {
+    if (HMI_RUNTIME.isRendered) return;
+
+    this.root.src = HMI_RUNTIME.getImageStr(HMI_RUNTIME.get(src, 'formattedString')) ?? '';
   }
 }
 
 export class HMI_DISPLAY_VALUE implements RUNTIME_ELEMENT { 
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     value: ARG_VAL_NUMERICAL,
-    before: ARG_CONST_ARRAY_USINT | undefined,
-    after: ARG_CONST_ARRAY_USINT | undefined,
-    decimals: ARG_CONST_NUMERICAL | undefined,
+    before?: ARG_CONST_ARRAY_USINT, 
+    after?: ARG_CONST_ARRAY_USINT,
+    decimals?: ARG_CONST_NUMERICAL,
   ): void {
     const _value = HMI_RUNTIME.get(value);
     const _before = HMI_RUNTIME.get(before, 'formattedString') ?? '';
@@ -81,22 +69,21 @@ export class HMI_DISPLAY_VALUE implements RUNTIME_ELEMENT {
     const _decimals = HMI_RUNTIME.get(decimals) ?? 0;
 
     const displayValue = +_value.toFixed(_decimals);
-    this.p.innerHTML = `${_before}${displayValue}${_after}`;
+    this.root.innerHTML = `${_before}${displayValue}${_after}`;
   }
 }
 
 export class HMI_DISPLAY_ENUM implements RUNTIME_ELEMENT { 
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
   
   render(
     value: ARG_VAL_NUMERICAL,
     strings: ARG_CONST_ARRAY_USINT,
-    numbers: ARG_CONST_ARRAY_UDINT,
-    before: ARG_CONST_ARRAY_USINT | undefined,
-    after: ARG_CONST_ARRAY_USINT | undefined,
+    numbers: ARG_CONST_ARRAY_UDINT, 
+    before?: ARG_CONST_ARRAY_USINT,
+    after?: ARG_CONST_ARRAY_USINT,
   ): void {
-    const _value = HMI_RUNTIME.get(value);
+    const _value = HMI_RUNTIME.get(value); 
     const _strings = HMI_RUNTIME.get(strings, 'formattedString').split(';');
     const _numbers = HMI_RUNTIME.get(numbers);
     const _before = HMI_RUNTIME.get(before, 'formattedString') ?? '';
@@ -104,111 +91,92 @@ export class HMI_DISPLAY_ENUM implements RUNTIME_ELEMENT {
 
     const id = _numbers.indexOf(_value);
     const displayValue = id >= 0 && id < _strings.length ? _strings[id] : '';
-    this.p.innerHTML = `${_before}${displayValue}${_after}`;
+    this.root.innerHTML = `${_before}${displayValue}${_after}`;
   }
 }
 
 export class HMI_DISPLAY_STRING implements RUNTIME_ELEMENT { 
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     value: ARG_VAL_ARRAY_USINT | ARG_CONST_ARRAY_USINT,
-    before: ARG_CONST_ARRAY_USINT | undefined,
-    after: ARG_CONST_ARRAY_USINT | undefined,
+    before?: ARG_CONST_ARRAY_USINT,
+    after?: ARG_CONST_ARRAY_USINT,
   ): void {
     const _value = HMI_RUNTIME.get(value, 'formattedString');
     const _before = HMI_RUNTIME.get(before, 'formattedString');
     const _after = HMI_RUNTIME.get(after, 'formattedString');
 
-    this.p.innerHTML = `${_before}${_value}${_after}`;
+    this.root.innerHTML = `${_before}${_value}${_after}`;
   }
 }
 
 export class HMI_INPUT_BUTTON implements RUNTIME_ELEMENT { 
-  readonly button = document.createElement('button');
-  readonly root = this.button;
+  readonly root = create('button').addClasses('default');
 
   render(
     value: ARG_VAL_SIGNED | ARG_VAL_UNSIGNED,
-    text: ARG_CONST_ARRAY_USINT | undefined,
-    setValue: ARG_CONST_SIGNED | ARG_CONST_UNSIGNED | undefined,
+    text?: ARG_CONST_ARRAY_USINT,
+    setValue?: ARG_CONST_SIGNED | ARG_CONST_UNSIGNED,
   ): void {
     if (!HMI_RUNTIME.isRendered) {
-      this.button.innerHTML = HMI_RUNTIME.get(text, 'formattedString') ?? '';;
-      this.button.addEventListener('click', () => HMI_RUNTIME.set(value, HMI_RUNTIME.get(setValue) ?? 1));
+      this.root.innerHTML = HMI_RUNTIME.get(text, 'formattedString') ?? '';;
+      this.root.addEventListener('click', () => HMI_RUNTIME.set(value, HMI_RUNTIME.get(setValue) ?? 1));
+    }
+  }
+} 
+
+export class HMI_REBOOT implements RUNTIME_ELEMENT { 
+  readonly root = create('button').addClasses('default');
+
+  render(): void {
+    if (!HMI_RUNTIME.isRendered) {
+      this.root.innerHTML = 'Reboot';
+      this.root.addEventListener('click', () => HMI_RUNTIME.setGom(0x000C0001, 0, 0));
     }
   }
 }
 
 export class HMI_INPUT_NUMBER implements RUNTIME_ELEMENT {
-  readonly root = document.createElement('div');
-  readonly Before = this.root.appendChild(document.createElement('p'));
-  readonly input = this.root.appendChild(document.createElement('input'));
-  readonly After = this.root.appendChild(document.createElement('p'));
-
-  constructor() {
-    this.input.type = 'number';
-  }
+  readonly root = create('div');
+  readonly Before = this.root.add(create('p'));
+  readonly input = this.root.add(create('input').set({ type: 'number' }));
+  readonly After = this.root.add(create('p'));
 
   render(
     value: ARG_VAL_NUMERICAL,
-    before: ARG_CONST_ARRAY_USINT | undefined,
-    after: ARG_CONST_ARRAY_USINT | undefined,
+    before?: ARG_CONST_ARRAY_USINT,
+    after?: ARG_CONST_ARRAY_USINT,
   ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      this.Before.innerHTML = HMI_RUNTIME.get(before, 'formattedString') ?? '';
-      this.After.innerHTML = HMI_RUNTIME.get(after, 'formattedString') ?? ''; 
-
-      this.input.addEventListener('focusout', () => HMI_RUNTIME.set(value, this.input.valueAsNumber));
-    }
+    if (document.activeElement !== this.input) this.input.valueAsNumber = HMI_RUNTIME.get(value);
+    if (HMI_RUNTIME.isRendered) return
     
-    if (document.activeElement !== this.input) this.input.value = `${HMI_RUNTIME.get(value)}`;
+    this.input.addEventListener('focusout', () => HMI_RUNTIME.set(value, this.input.valueAsNumber));
+    this.Before.innerHTML = HMI_RUNTIME.get(before, 'formattedString') ?? '';
+    this.After.innerHTML = HMI_RUNTIME.get(after, 'formattedString') ?? ''; 
   }
 }
 
 export class HMI_USER_MANAGEMENT_SIGN_IN implements RUNTIME_ELEMENT {
-  readonly root = document.createElement('div');
+  readonly root = create('div');
 
-  readonly p = this.root.appendChild(document.createElement('p'));
-
-  readonly fieldSignedOut = this.root.appendChild(document.createElement('div'));
-  readonly pwInput = this.fieldSignedOut.appendChild(document.createElement('input'));
-  readonly signInBtn = this.fieldSignedOut.appendChild(document.createElement('button'));
-
-  readonly fieldSignedIn = this.root.appendChild(document.createElement('div'));
-  readonly signOutBtn = this.fieldSignedIn.appendChild(document.createElement('button'));
-
-  constructor() {
-    this.fieldSignedOut.classList.add('signed-out-field');
-    this.pwInput.type = 'password';
-    this.signInBtn.innerHTML = 'Sign In';
-    this.signInBtn.addEventListener('click', async () => { 
-      if(!await HMI_RUNTIME.signIn(this.pwInput.value)) {
-        this.signInBtn.innerHTML = 'Sign In Failed';
-        setTimeout(() => this.signInBtn.innerHTML = 'Sign In', 2000);
-      }
-      this.render();
-    });
-
-    this.fieldSignedIn.classList.add('signed-in-field');
-    this.signOutBtn.innerHTML = 'Sign Out';
-    this.signOutBtn.addEventListener('click', () => {
-      HMI_RUNTIME.signOut();
-      this.render();
-    });
-  }
+  readonly header = this.root.add(create('p'));
+  readonly fieldSignedOut = this.root.add(create('div').addClasses('signed-out-field'));
+  readonly fieldSignedIn = this.root.add(create('div').addClasses('signed-in-field'));
+  readonly pwInput = this.fieldSignedOut.add(create('input').set({ type: 'password' }));
+  readonly signInBtn = this.fieldSignedOut.add(create('button').set({ innerHTML: 'Sign In', onclick: () => { HMI_RUNTIME.signIn(this.pwInput.value) } }));
+  readonly signOutBtn = this.fieldSignedIn.add(create('button').set({ innerHTML: 'Sign Out', onclick: () => { HMI_RUNTIME.signOut(); } }));
  
   render(): void {
     const currentUser = HMI_RUNTIME.currentUser();
 
     if (currentUser) { 
-      this.p.innerHTML = `Current User Level: ${currentUser}`;
+      this.header.innerHTML = `Current User Level: ${currentUser}`;
       this.fieldSignedIn.style.display = 'block';
       this.fieldSignedOut.style.display = 'none';
     }
     else {
-      this.p.innerHTML = 'Sign in with Password:';
+      this.header.innerHTML = 'Sign in with Password:';
       this.fieldSignedIn.style.display = 'none';
       this.fieldSignedOut.style.display = 'block';
     }
@@ -216,30 +184,16 @@ export class HMI_USER_MANAGEMENT_SIGN_IN implements RUNTIME_ELEMENT {
 }
 
 export class HMI_USER_MANAGEMENT_CHANGE_PASSWORD implements RUNTIME_ELEMENT { 
-  readonly root = document.createElement('div');
+  readonly root = create('div');
 
-  readonly pwHeader = this.root.appendChild(document.createElement('p'));
-  readonly pwInput = this.root.appendChild(document.createElement('input'));
+  readonly pwHeader = this.root.add(create('p').set({ innerHTML: 'New Password:' }));
+  readonly pwInput = this.root.add(create('input').set({ type: 'password' }));
+  readonly pwRepeatedHeader = this.root.add(create('p').set({ innerHTML: 'New Password (Repeated):' }));
+  readonly pwRepeatedInput = this.root.add(create('input').set({ type: 'password' }));
+  readonly changeBtn = this.root.add(create('button').set({ innerHTML: 'Change Password' }));
 
-  readonly pwRepeatedHeader = this.root.appendChild(document.createElement('p'));
-  readonly pwRepeatedInput = this.root.appendChild(document.createElement('input'))
-
-  readonly changeBtn = this.root.appendChild(document.createElement('button'));
-
-  constructor() {
-    this.pwHeader.innerHTML = 'New Password:';
-    this.pwInput.type = 'password';
- 
-    this.pwRepeatedHeader.innerHTML = 'New Password (Repeated):';
-    this.pwRepeatedInput.type = 'password';
-
-    this.changeBtn.innerHTML = 'Change Password';
-  }
-
-  render(
-    id: ARG_CONST_UDINT
-  ): void {
-    this.changeBtn.addEventListener('click', async () => {
+  render(id: ARG_CONST_UDINT): void {
+    this.changeBtn.onclick = async () => {
       const displayMessage = (msg: string) => { 
         this.changeBtn.innerHTML = msg;
         setTimeout(() => {
@@ -257,8 +211,8 @@ export class HMI_USER_MANAGEMENT_CHANGE_PASSWORD implements RUNTIME_ELEMENT {
       this.changeBtn.disabled = true;
 
       const result = await HMI_RUNTIME.changePassword(HMI_RUNTIME.get(id), this.pwInput.value);
-      if (result.result) displayMessage('Password Changed!');
+      if (result.result === true) displayMessage('Password Changed!');
       else displayMessage(result.reason);
-    });
+    };
   }
 }

@@ -1,15 +1,15 @@
-import '../../hmi_runtime';
+import '../../hmi_runtime'; 
 
 export class HMI_GAUGE_CIRCLE implements RUNTIME_ELEMENT {
-  readonly root = document.createElement('div');
+  readonly root = create('div');
 
   render(
     title: ARG_CONST_ARRAY_USINT,
     value: ARG_VAL_NUMERICAL,
-    min: ARG_CONST_NUMERICAL,
+    min: ARG_CONST_NUMERICAL, 
     max: ARG_CONST_NUMERICAL
   ) {
-    const _title = HMI_RUNTIME.get(title, 'formattedString');
+    const _title = HMI_RUNTIME.get(title, 'formattedString'); 
     const _value = HMI_RUNTIME.get(value);
     const _min = HMI_RUNTIME.get(min);
     const _max = HMI_RUNTIME.get(max);
@@ -44,7 +44,7 @@ export class HMI_GAUGE_CIRCLE implements RUNTIME_ELEMENT {
 }
 
 export class HMI_GAUGE_BAR implements RUNTIME_ELEMENT {
-  readonly root = document.createElement('div');
+  readonly root = create('div');
 
   render(
     title: ARG_CONST_ARRAY_USINT,

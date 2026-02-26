@@ -73,20 +73,24 @@ declare global {
         content?: HTMLElement;
         abstract render(...args: (ARG | undefined)[]): void;
     }
+    export function create<T extends keyof HTMLElementTagNameMap>(tag: T): HTMLElementTagNameMap[T];
+    interface HTMLElement {
+        add<T extends HTMLElement>(child: T): T;
+        add<T extends HTMLElement[]>(...children: T): T;
+        addClasses(...classNames: string[]): this;
+        addStyles(styles: Partial<CSSStyleDeclaration>): this;
+        set(objs: Partial<this>): this;
+    }
     class runtime {
         get isRendered(): boolean;
-        readGOM(uid: number, inst: number): Promise<Uint8Array | undefined>;
-        readGOMs(objs: {
-            uid: number;
-            inst: number;
-        }[]): Promise<Uint8Array[] | undefined>;
-        writeGOM(uid: number, inst: number, value: Uint8Array): Promise<boolean>;
         getImageStr(name: string): string | undefined;
         changeScreen(index: number): void;
         currentScreen(): number;
         screenNames(): string[];
-        getGOMval(uid: number, inst: number, callBack?: (value: Uint8Array) => void): void;
-        setGOMval(uid: number, inst: number, data: Uint8Array | number, callBack?: () => void): void;
+        getGomCB(uid: number, inst: number, callBack?: (value: Uint8Array) => void): void;
+        getGom(uid: number, inst: number): Promise<Uint8Array | undefined>;
+        setGomCB(uid: number, inst: number, data: Uint8Array | number, callBack?: (result: boolean) => void): void;
+        setGom(uid: number, inst: number, data: Uint8Array | number): Promise<boolean>;
         get(descriptor: ARG_VAL_NUMERICAL | ARG_CONST_NUMERICAL): number;
         get(descriptor: ARG_VAL_NUMERICAL | ARG_CONST_NUMERICAL, format: 'number'): number;
         get(descriptor: ARG_VAL_NUMERICAL | ARG_CONST_NUMERICAL, format: 'Uint8Array'): Uint8Array;
@@ -164,7 +168,7 @@ declare global {
         setArrayUdint(descriptor: ARG_VAL_ARRAY_UDINT, value: number[] | Uint8Array): void;
         setArrayUint(descriptor: ARG_VAL_ARRAY_UINT, value: number[] | Uint8Array): void;
         setArrayUsint(descriptor: ARG_VAL_ARRAY_USINT, value: number[] | Uint8Array | string): void;
-        signIn(password: string): Promise<number>;
+        signIn(password?: string): Promise<number>;
         signOut(): Promise<void>;
         changePassword(userId: number, newPassword: string): Promise<{
             result: true;

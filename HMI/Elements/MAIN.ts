@@ -1,72 +1,58 @@
-import '../../hmi_runtime';
+import '../../hmi_runtime'; 
 
 export class HMI_SCREEN implements RUNTIME_ELEMENT {
-  readonly root = document.createElement('div');
+  readonly root = create('div');
   
-  readonly header = this.root.appendChild(document.createElement('div'));
-  readonly headerText = this.header.appendChild(document.createElement('p'));
-  readonly headerLogo = this.header.appendChild(document.createElement('img'));
+  readonly header = this.root.add(create('div').addClasses('header'));
+  readonly bottom = this.root.add(create('div').addClasses('bottom'));
+  readonly navigation = this.root.add(create('div').addClasses('navigation'));
+  readonly content = this.root.add(create('div').addClasses('content'));
 
-  readonly bottom = this.root.appendChild(document.createElement('div'));
-  readonly bottomText = this.bottom.appendChild(document.createElement('p'));
+  readonly headerText = this.header.add(create('p'));
+  readonly headerLogo = this.header.add(create('img').set({ src: HMI_RUNTIME.getImageStr('logo.jpg') ?? '' }));
 
-  readonly navigation = this.root.appendChild(document.createElement('div'));
-  readonly navigationList = this.navigation.appendChild(document.createElement('ul'));
+  readonly bottomText = this.bottom.add(create('p').set({ innerHTML: 'Made with ❤️ by TURCK in the Netherlands' }));
 
-  readonly content = this.root.appendChild(document.createElement('div'));
+  readonly navigationList = this.navigation.add(create('ul'));
 
-  constructor() {
-    this.header.classList.add('header');
-    this.bottom.classList.add('bottom');
-    this.navigation.classList.add('navigation');
-    this.content.classList.add('content');
+  render(name: ARG_CONST_ARRAY_USINT): void {
+    if (HMI_RUNTIME.isRendered) return; 
+    this.headerText.innerHTML = HMI_RUNTIME.get(name, 'formattedString');
 
-    this.headerLogo.src = HMI_RUNTIME.getImageStr('logo.jpg') ?? '';
-    this.bottomText.innerHTML = 'Made with ❤️ by TURCK in the Netherlands';
-  }
-
-  render(
-    name: ARG_CONST_ARRAY_USINT
-  ): void {
-    if (!HMI_RUNTIME.isRendered) {
-      const _name = HMI_RUNTIME.get(name, 'formattedString');
-
-      this.headerText.innerHTML = _name;
-      for (const [i, screen] of HMI_RUNTIME.screenNames().entries()) {
-        const a = this.navigationList.appendChild(document.createElement('li')).appendChild(document.createElement('a'));
-        a.href = `#${i}`;
-        a.innerHTML = screen;
-        a.onclick = () => HMI_RUNTIME.changeScreen(i);
-        if (_name === screen) a.classList.add('active');
-      }
+    for (const [i, screen] of HMI_RUNTIME.screenNames().entries()) {
+      this.navigationList.add(create('li')).add(create('a').set({
+        href: `#${i}`,
+        innerHTML: screen,
+        onclick: () => HMI_RUNTIME.changeScreen(i)
+      }).addClasses(this.headerText.innerHTML === screen ? 'active' : 'inactive'));
     }
   }
 }
 
 export class HMI_GRID implements RUNTIME_ELEMENT { 
-  readonly root = document.createElement('div');
+  readonly root = create('div');
 
   render(
-    columnSizes: ARG_CONST_ARRAY_USINT | undefined,
-    rowSizes: ARG_CONST_ARRAY_USINT | undefined,
+    columnSizes?: ARG_CONST_ARRAY_USINT,
+    rowSizes?: ARG_CONST_ARRAY_USINT,
   ) {
-    if (!HMI_RUNTIME.isRendered) {
-      this.root.style.gridTemplateColumns = HMI_RUNTIME.get(columnSizes, 'string') ?? 'auto';
-      this.root.style.gridTemplateRows = HMI_RUNTIME.get(rowSizes, 'string') ?? 'auto';
-    }
+    if (HMI_RUNTIME.isRendered) return;
+
+    this.root.style.gridTemplateColumns = HMI_RUNTIME.get(columnSizes, 'string') ?? 'auto';
+    this.root.style.gridTemplateRows = HMI_RUNTIME.get(rowSizes, 'string') ?? 'auto';
   }
 }
 
 export class HMI_CONTAINER implements RUNTIME_ELEMENT { 
-  readonly root = document.createElement('div');
+  readonly root = create('div');
 
   render(
-    column: ARG_CONST_NUMERICAL | undefined,
-    columnSpan: ARG_CONST_NUMERICAL | undefined,
-    row: ARG_CONST_NUMERICAL | undefined,
-    rowSpan: ARG_CONST_NUMERICAL | undefined,
-    visible: ARG_VAL_NUMERICAL | ARG_CONST_NUMERICAL | undefined,
-    acceptedUsers: ARG_CONST_ARRAY_NUMERICAL | undefined,
+    column?: ARG_CONST_NUMERICAL,
+    columnSpan?: ARG_CONST_NUMERICAL,
+    row?: ARG_CONST_NUMERICAL,
+    rowSpan?: ARG_CONST_NUMERICAL,
+    visible?: ARG_VAL_NUMERICAL | ARG_CONST_NUMERICAL,
+    acceptedUsers?: ARG_CONST_ARRAY_NUMERICAL,
   ) {
     if (!HMI_RUNTIME.isRendered) {
       this.root.style.gridColumnStart = `${(HMI_RUNTIME.get(column) ?? 0)}`;

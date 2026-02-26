@@ -1,157 +1,151 @@
 import '../../hmi_runtime'; 
 
 export class HMI_DISPLAY_GOM_STRING implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
-    txtBefore: ARG_CONST_ARRAY_USINT | undefined,
-    txtAfter: ARG_CONST_ARRAY_USINT | undefined,
+    txtBefore?: ARG_CONST_ARRAY_USINT, 
+    txtAfter?: ARG_CONST_ARRAY_USINT,
   ): void {
+    if (HMI_RUNTIME.isRendered) return; 
+
     const _uid = HMI_RUNTIME.get(uid);
     const _inst = HMI_RUNTIME.get(inst);
-    const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
+    const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? ''; 
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
-
-      HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${bufferToString(value, true)}${_txtAfter}`;
-      });
-    }
+    this.root.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
+ 
+    HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      this.root.innerHTML = `${_txtBefore}${bufferToString(value, true)}${_txtAfter}`;
+    });
   }
 }
 
 export class HMI_DISPLAY_GOM_INT implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
-    txtBefore: ARG_CONST_ARRAY_USINT | undefined,
-    txtAfter: ARG_CONST_ARRAY_USINT | undefined,
+    txtBefore?: ARG_CONST_ARRAY_USINT,
+    txtAfter?: ARG_CONST_ARRAY_USINT,
   ): void {
+    if (HMI_RUNTIME.isRendered) return;
+
     const _uid = HMI_RUNTIME.get(uid);
     const _inst = HMI_RUNTIME.get(inst);
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
+    this.root.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
-      HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${fromBytesInt32(value)}${_txtAfter}`;
-      });
-    }
+    HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      this.root.innerHTML = `${_txtBefore}${fromBytesInt32(value)}${_txtAfter}`;
+    });
   }
 }
 export class HMI_DISPLAY_GOM_UINT implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
-    txtBefore: ARG_CONST_ARRAY_USINT | undefined,
-    txtAfter: ARG_CONST_ARRAY_USINT | undefined,
+    txtBefore?: ARG_CONST_ARRAY_USINT,
+    txtAfter?: ARG_CONST_ARRAY_USINT,
   ): void {
+    if (HMI_RUNTIME.isRendered) return;
+
     const _uid = HMI_RUNTIME.get(uid);
     const _inst = HMI_RUNTIME.get(inst);
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
-
-      HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${fromBytesUint32(value)}${_txtAfter}`;
-      });
-    }
+    this.root.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
+ 
+    HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      this.root.innerHTML = `${_txtBefore}${fromBytesUint32(value)}${_txtAfter}`;
+    });
   }
 }
 
 export class HMI_DISPLAY_GOM_REAL implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
-    txtBefore: ARG_CONST_ARRAY_USINT | undefined,
-    txtAfter: ARG_CONST_ARRAY_USINT | undefined,
+    txtBefore?: ARG_CONST_ARRAY_USINT,
+    txtAfter?: ARG_CONST_ARRAY_USINT,
   ): void {
+    if (HMI_RUNTIME.isRendered) return;
+
     const _uid = HMI_RUNTIME.get(uid);
     const _inst = HMI_RUNTIME.get(inst);
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
+    this.root.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
-      HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${fromBytesFloat(value)}${_txtAfter}`;
-      });
-    }
+    HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      this.root.innerHTML = `${_txtBefore}${fromBytesFloat(value)}${_txtAfter}`;
+    });
   }
 }
 
 export class HMI_DISPLAY_GOM_VERSION implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
-    txtBefore: ARG_CONST_ARRAY_USINT | undefined,
-    txtAfter: ARG_CONST_ARRAY_USINT | undefined,
+    txtBefore?: ARG_CONST_ARRAY_USINT,
+    txtAfter?: ARG_CONST_ARRAY_USINT,
   ): void {
+    if (HMI_RUNTIME.isRendered) return;
+
     const _uid = HMI_RUNTIME.get(uid);
     const _inst = HMI_RUNTIME.get(inst);
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
+    this.root.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
-      HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        this.p.innerHTML = `${_txtBefore}${value[3]}.${value[2]}.${value[1]}.${value[0]}${_txtAfter}`;
-      });
-    }
+    HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      this.root.innerHTML = `${_txtBefore}${value[3]}.${value[2]}.${value[1]}.${value[0]}${_txtAfter}`;
+    });
   }
 }
 
 export class HMI_DISPLAY_GOM_MAC implements RUNTIME_ELEMENT {
-  readonly p = document.createElement('p');
-  readonly root = this.p;
+  readonly root = create('p');
 
   render(
     uid: ARG_CONST_NUMERICAL,
     inst: ARG_CONST_NUMERICAL,
-    txtBefore: ARG_CONST_ARRAY_USINT | undefined,
-    txtAfter: ARG_CONST_ARRAY_USINT | undefined,
+    txtBefore?: ARG_CONST_ARRAY_USINT,
+    txtAfter?: ARG_CONST_ARRAY_USINT,
   ): void {
+    if (HMI_RUNTIME.isRendered) return;
+
     const _uid = HMI_RUNTIME.get(uid);
     const _inst = HMI_RUNTIME.get(inst);
     const _txtBefore = HMI_RUNTIME.get(txtBefore, 'formattedString') ?? '';
     const _txtAfter = HMI_RUNTIME.get(txtAfter, 'formattedString') ?? '';
 
-    if (!HMI_RUNTIME.isRendered) {
-      this.p.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
+    this.root.innerHTML = `${_txtBefore}loading...${_txtAfter}`;
 
-      HMI_RUNTIME.getGOMval(_uid, _inst, (value) => {
-        if (value.byteLength < 6) {
-          this.p.innerHTML = `${_txtBefore}invalid value${_txtAfter}`;
-          return;
-        }
-        
-        this.p.innerHTML = _txtBefore;
-        for (let i = 0; i < 6; i++) this.p.innerHTML += value[i].toString(16).padStart(2, '0') + (i < 5 ? ':' : '');
-        this.p.innerHTML += _txtAfter;
-      });
-    }
+    HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      if (value.byteLength < 6) {
+        this.root.innerHTML = `${_txtBefore}invalid value${_txtAfter}`;
+        return;
+      }
+      
+      this.root.innerHTML = _txtBefore;
+      for (let i = 0; i < 6; i++) this.root.innerHTML += value[i].toString(16).padStart(2, '0') + (i < 5 ? ':' : '');
+      this.root.innerHTML += _txtAfter;
+    });
   }
 }
