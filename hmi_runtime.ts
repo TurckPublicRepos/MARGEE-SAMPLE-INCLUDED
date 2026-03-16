@@ -68,10 +68,12 @@ declare global {
     export type ARG_VAL_ARRAY_NUMERICAL = ARG_VAL_ARRAY_SIGNED | ARG_VAL_ARRAY_UNSIGNED | ARG_VAL_ARRAY_REAL;
     export type ARG_VAL = ARG_VAL_NUMERICAL | ARG_VAL_ARRAY_NUMERICAL;
     export type ARG = ARG_CONST | ARG_VAL;
-    export abstract class RUNTIME_ELEMENT {
+    export abstract class ELEMENT {
         abstract readonly root: HTMLElement;
-        content?: HTMLElement;
         abstract render(...args: (ARG | undefined)[]): void;
+    }
+    export abstract class CONTAINER_ELEMENT extends ELEMENT {
+        abstract readonly content: HTMLElement;
     }
     export function create<T extends keyof HTMLElementTagNameMap>(tag: T): HTMLElementTagNameMap[T];
     interface HTMLElement {

@@ -1,11 +1,11 @@
 import '../../hmi_runtime'; 
 
-export class HMI_SCREEN implements RUNTIME_ELEMENT {
+export class HMI_SCREEN implements CONTAINER_ELEMENT {
   readonly root = create('div');
   
   readonly header = this.root.add(create('div').addClasses('header'));
   readonly bottom = this.root.add(create('div').addClasses('bottom'));
-  readonly navigation = this.root.add(create('div').addClasses('navigation'));
+  readonly navigation = this.root.add(create('div').addClasses('navigation')); 
   readonly content = this.root.add(create('div').addClasses('content'));
 
   readonly headerText = this.header.add(create('p'));
@@ -15,7 +15,7 @@ export class HMI_SCREEN implements RUNTIME_ELEMENT {
 
   readonly navigationList = this.navigation.add(create('ul'));
 
-  render(name: ARG_CONST_ARRAY_USINT): void {
+  render(name: ARG_CONST_ARRAY_USINT): void { 
     if (HMI_RUNTIME.isRendered) return; 
     this.headerText.innerHTML = HMI_RUNTIME.get(name, 'formattedString');
 
@@ -29,8 +29,9 @@ export class HMI_SCREEN implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_GRID implements RUNTIME_ELEMENT { 
+export class HMI_GRID implements CONTAINER_ELEMENT { 
   readonly root = create('div');
+  readonly content = this.root;
 
   render(
     columnSizes?: ARG_CONST_ARRAY_USINT,
@@ -43,8 +44,9 @@ export class HMI_GRID implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_CONTAINER implements RUNTIME_ELEMENT { 
+export class HMI_CONTAINER implements CONTAINER_ELEMENT { 
   readonly root = create('div');
+  readonly content = this.root;
 
   render(
     column?: ARG_CONST_NUMERICAL,

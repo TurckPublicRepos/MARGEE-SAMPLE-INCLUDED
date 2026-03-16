@@ -1,6 +1,6 @@
 import '../../hmi_runtime'; 
 
-export class HMI_GAUGE_CIRCLE implements RUNTIME_ELEMENT {
+export class HMI_GAUGE_CIRCLE implements ELEMENT {
   readonly root = create('div');
 
   render(
@@ -11,7 +11,7 @@ export class HMI_GAUGE_CIRCLE implements RUNTIME_ELEMENT {
   ) {
     const _title = HMI_RUNTIME.get(title, 'formattedString'); 
     const _value = HMI_RUNTIME.get(value);
-    const _min = HMI_RUNTIME.get(min);
+    const _min = HMI_RUNTIME.get(min); 
     const _max = HMI_RUNTIME.get(max);
     const _progress = (_value + Math.abs(_min)) / (_max + Math.abs(_min)) * 943;
 
@@ -43,7 +43,7 @@ export class HMI_GAUGE_CIRCLE implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_GAUGE_BAR implements RUNTIME_ELEMENT {
+export class HMI_GAUGE_BAR implements ELEMENT {
   readonly root = create('div');
 
   render(

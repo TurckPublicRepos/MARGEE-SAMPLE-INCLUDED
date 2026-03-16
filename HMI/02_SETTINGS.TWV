@@ -1,47 +1,45 @@
-HMI_SCREEN("⚙️ Settings");       
-    HMI_GRID("25px 1fr 25px", "25px min-content min-content min-content auto min-content 25px")<height-full>;
-        HMI_CONTAINER(2, 1, 2, 1); 
-            HMI_TEXT_H1("Margee.");
-        END_HMI_CONTAINER 
-        HMI_CONTAINER(2, 1, 3, 1);
-            HMI_TEXT_H2("Password management");
-            HMI_GRID();
-                HMI_CONTAINER(1, 1, 1, 1, 1, [1]); 
-                    HMI_TEXT_H3("User Level 1"); 
-                    HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)1);
-                END_HMI_CONTAINER
-                HMI_CONTAINER(2, 1, 1, 1, 1, [1, 2]); 
-                    HMI_TEXT_H3("User Level 2");
-                    HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)2);
-                END_HMI_CONTAINER 
-                HMI_CONTAINER(3, 1, 1, 1, 1, [1, 3]);
-                    HMI_TEXT_H3("User Level 3");
-                    HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)3);
-                END_HMI_CONTAINER
-                HMI_CONTAINER(4, 1, 1, 1, 1, [1, 4]);
-                    HMI_TEXT_H3("User Level 4");
-                    HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)4);
-                END_HMI_CONTAINER
-                HMI_CONTAINER(5, 1, 1, 1, 1, [1, 5]);
-                    HMI_TEXT_H3("User Level 5");
-                    HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)5);
-                END_HMI_CONTAINER
-            END_HMI_GRID
-        END_HMI_CONTAINER
-        HMI_CONTAINER(2, 1, 4, 1);
-            HMI_TEXT_P("<br>");
-            HMI_TEXT_P("The Margee HMI, like argee, supports password management.");
-            HMI_TEXT_P("The main password (the one also used in the normal webserver) can change the password for all users.");
-            HMI_TEXT_P("If you are signed in with a password of a certain user, you can only change the password of that particular user.");
-            HMI_TEXT_P("<br>");
-            HMI_TEXT_P("We can show or blur certain containers, based on which user is signed in!");
-            HMI_TEXT_P("You can try it, set a password for a user, sign out and back in again with that user.");
-        END_HMI_CONTAINER
-        HMI_CONTAINER(2, 1, 5, 1);
-        END_HMI_CONTAINER 
-        HMI_CONTAINER(2, 1, 6, 1); 
-            HMI_USER_MANAGEMENT_SIGN_IN();
-        END_HMI_CONTAINER
-    END_HMI_GRID
-END_HMI_SCREEN      
+HMI_SCREEN("⚙️ Settings")   
+  HMI_GRID("25px 1fr 25px", "25px min-content min-content min-content auto min-content 25px")<height-full>
+    HMI_CONTAINER(2, 1, 2, 1)
+      HMI_TEXT_H1("Margee.");
+    ; 
+    HMI_CONTAINER(2, 1, 3, 1)
+      HMI_TEXT_H2("Password management");
+      HMI_GRID()
+        HMI_CONTAINER(1, 1, 1, 1, 1, [1])
+          HMI_TEXT_H3("User Level 1"); 
+          HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)1);
+        ;
+        HMI_CONTAINER(2, 1, 1, 1, 1, [1, 2])
+          HMI_TEXT_H3("User Level 2");
+          HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)2); 
+        ; 
+        HMI_CONTAINER(3, 1, 1, 1, 1, [1, 3]) 
+          HMI_TEXT_H3("User Level 3");
+          HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)3);
+        ;
+        HMI_CONTAINER(4, 1, 1, 1, 1, [1, 4])
+          HMI_TEXT_H3("User Level 4");
+          HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)4);
+        ;
+        HMI_CONTAINER(5, 1, 1, 1, 1, [1, 5])
+          HMI_TEXT_H3("User Level 5");
+          HMI_USER_MANAGEMENT_CHANGE_PASSWORD((UDINT)5);
+        ;
+      ;
+    ;
+    HMI_CONTAINER(2, 1, 4, 1)
+      HMI_TEXT_P("<br>");
+      HMI_TEXT_P("The Margee HMI, like argee, supports password management.");
+      HMI_TEXT_P("The main password (the one also used in the normal webserver) can change the password for all users.");
+      HMI_TEXT_P("If you are signed in with a password of a certain user, you can only change the password of that particular user.");
+      HMI_TEXT_P("<br>");
+      HMI_TEXT_P("We can show or blur certain containers, based on which user is signed in!");
+      HMI_TEXT_P("You can try it, set a password for a user, sign out and back in again with that user.");
+    ;
+    HMI_CONTAINER(2, 1, 6, 1)
+      HMI_USER_MANAGEMENT_SIGN_IN();
+    ;
+  ;
+;      
    

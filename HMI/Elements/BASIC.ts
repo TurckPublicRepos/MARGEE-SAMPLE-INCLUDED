@@ -1,6 +1,6 @@
 import '../../hmi_runtime'; 
 
-export class HMI_TEXT_P implements RUNTIME_ELEMENT { 
+export class HMI_TEXT_P implements ELEMENT { 
   readonly root = create('p');
 
   /**
@@ -14,7 +14,7 @@ export class HMI_TEXT_P implements RUNTIME_ELEMENT {
   }
 } 
  
-export class HMI_TEXT_H1 implements RUNTIME_ELEMENT { 
+export class HMI_TEXT_H1 implements ELEMENT { 
   readonly root = create('h1');
  
   render(text: ARG_CONST_ARRAY_USINT): void {
@@ -24,17 +24,17 @@ export class HMI_TEXT_H1 implements RUNTIME_ELEMENT {
   } 
 }
 
-export class HMI_TEXT_H2 implements RUNTIME_ELEMENT {
+export class HMI_TEXT_H2 implements ELEMENT {
   readonly root = create('h2');
 
-  render(text: ARG_CONST_ARRAY_USINT): void {
-    if (HMI_RUNTIME.isRendered) return;
+  render(text: ARG_CONST_ARRAY_USINT): void { 
+    if (HMI_RUNTIME.isRendered) return; 
 
     this.root.innerHTML = HMI_RUNTIME.get(text, 'formattedString');
   }
 }
 
-export class HMI_TEXT_H3 implements RUNTIME_ELEMENT {
+export class HMI_TEXT_H3 implements ELEMENT { 
   readonly root = create('h3');
 
   render(text: ARG_CONST_ARRAY_USINT): void {
@@ -44,7 +44,7 @@ export class HMI_TEXT_H3 implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_IMAGE implements RUNTIME_ELEMENT {
+export class HMI_IMAGE implements ELEMENT {
   readonly root = create('img');
 
   render(src: ARG_CONST_ARRAY_USINT): void {
@@ -54,7 +54,7 @@ export class HMI_IMAGE implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_VALUE implements RUNTIME_ELEMENT { 
+export class HMI_DISPLAY_VALUE implements ELEMENT { 
   readonly root = create('p');
 
   render(
@@ -73,7 +73,7 @@ export class HMI_DISPLAY_VALUE implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_ENUM implements RUNTIME_ELEMENT { 
+export class HMI_DISPLAY_ENUM implements ELEMENT { 
   readonly root = create('p');
   
   render(
@@ -95,7 +95,7 @@ export class HMI_DISPLAY_ENUM implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_STRING implements RUNTIME_ELEMENT { 
+export class HMI_DISPLAY_STRING implements ELEMENT { 
   readonly root = create('p');
 
   render(
@@ -111,7 +111,7 @@ export class HMI_DISPLAY_STRING implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_INPUT_BUTTON implements RUNTIME_ELEMENT { 
+export class HMI_INPUT_BUTTON implements ELEMENT { 
   readonly root = create('button').addClasses('default');
 
   render(
@@ -126,7 +126,7 @@ export class HMI_INPUT_BUTTON implements RUNTIME_ELEMENT {
   }
 } 
 
-export class HMI_REBOOT implements RUNTIME_ELEMENT { 
+export class HMI_REBOOT implements ELEMENT { 
   readonly root = create('button').addClasses('default');
 
   render(): void {
@@ -137,7 +137,7 @@ export class HMI_REBOOT implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_INPUT_NUMBER implements RUNTIME_ELEMENT {
+export class HMI_INPUT_NUMBER implements ELEMENT {
   readonly root = create('div');
   readonly Before = this.root.add(create('p'));
   readonly input = this.root.add(create('input').set({ type: 'number' }));
@@ -157,7 +157,7 @@ export class HMI_INPUT_NUMBER implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_USER_MANAGEMENT_SIGN_IN implements RUNTIME_ELEMENT {
+export class HMI_USER_MANAGEMENT_SIGN_IN implements ELEMENT {
   readonly root = create('div');
 
   readonly header = this.root.add(create('p'));
@@ -183,7 +183,7 @@ export class HMI_USER_MANAGEMENT_SIGN_IN implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_USER_MANAGEMENT_CHANGE_PASSWORD implements RUNTIME_ELEMENT { 
+export class HMI_USER_MANAGEMENT_CHANGE_PASSWORD implements ELEMENT { 
   readonly root = create('div');
 
   readonly pwHeader = this.root.add(create('p').set({ innerHTML: 'New Password:' }));

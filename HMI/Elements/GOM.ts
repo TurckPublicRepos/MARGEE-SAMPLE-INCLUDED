@@ -1,6 +1,6 @@
 import '../../hmi_runtime'; 
 
-export class HMI_DISPLAY_GOM_STRING implements RUNTIME_ELEMENT {
+export class HMI_DISPLAY_GOM_STRING implements ELEMENT {
   readonly root = create('p');
 
   render(
@@ -24,7 +24,7 @@ export class HMI_DISPLAY_GOM_STRING implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_GOM_INT implements RUNTIME_ELEMENT {
+export class HMI_DISPLAY_GOM_INT implements ELEMENT {
   readonly root = create('p');
 
   render(
@@ -47,7 +47,7 @@ export class HMI_DISPLAY_GOM_INT implements RUNTIME_ELEMENT {
     });
   }
 }
-export class HMI_DISPLAY_GOM_UINT implements RUNTIME_ELEMENT {
+export class HMI_DISPLAY_GOM_UINT implements ELEMENT {
   readonly root = create('p');
 
   render(
@@ -71,7 +71,7 @@ export class HMI_DISPLAY_GOM_UINT implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_GOM_REAL implements RUNTIME_ELEMENT {
+export class HMI_DISPLAY_GOM_REAL implements ELEMENT {
   readonly root = create('p');
 
   render(
@@ -95,7 +95,7 @@ export class HMI_DISPLAY_GOM_REAL implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_GOM_VERSION implements RUNTIME_ELEMENT {
+export class HMI_DISPLAY_GOM_VERSION implements ELEMENT {
   readonly root = create('p');
 
   render(
@@ -119,7 +119,7 @@ export class HMI_DISPLAY_GOM_VERSION implements RUNTIME_ELEMENT {
   }
 }
 
-export class HMI_DISPLAY_GOM_MAC implements RUNTIME_ELEMENT {
+export class HMI_DISPLAY_GOM_MAC implements ELEMENT {
   readonly root = create('p');
 
   render(
