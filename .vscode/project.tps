@@ -4,8 +4,9 @@
   "maxNoTraces": 30,
   "maxFunctionCallsInExpression": 4,
   "imageDirectory": "HMI/Media",
-  "projectName": "Margee Project",
+  "projectName": "Project Name",
   "password": "password",
+  "address": "192.168.1.254",
   "ioParameters": [
     [
       0,
