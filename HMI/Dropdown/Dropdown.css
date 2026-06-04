@@ -1,0 +1,62 @@
+.DROPDOWN {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-normal);
+}
+
+.DROPDOWN > div {
+  font: var(--font-base-xs);
+  font-weight: bold;
+}
+
+.DROPDOWN > select {
+  padding: var(--spacing-large);
+  font: var(--font-base-sm);
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-900);
+  border: 1px solid var(--color-gray-300);
+  border-radius: 0;
+  border-left: 3px solid var(--color-gray-900);
+  cursor: pointer;
+  appearance: base-select;
+}
+.DROPDOWN > select:disabled {
+  background-color: var(--color-gray-200);
+  cursor: not-allowed;
+}
+.DROPDOWN > select:focus,
+.DROPDOWN > select:active {
+  outline: none;
+  box-shadow: none;
+}
+.DROPDOWN > select:open {
+  background-color: var(--color-gray-900);
+  border-color: var(--color-gray-900);
+  color: var(--color-gray-50);
+}
+
+.DROPDOWN > ::picker(select) {
+  appearance: base-select;
+  border: none;
+}
+
+.DROPDOWN > select > option {
+  padding: var(--spacing-large);
+  font: var(--font-base-sm);
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-900);
+  border: 1px solid var(--color-gray-300);
+  border-top: none;
+  appearance: base-select;
+
+}
+.DROPDOWN > select > option::checkmark {
+  display: none;
+}
+.DROPDOWN > select > option:focus {
+  border-left: 3px solid var(--color-primary);
+}
+.DROPDOWN > select > option:hover {
+  background-color: var(--color-gray-200);
+  border-left: 3px solid var(--color-gray-900);
+}

@@ -1,0 +1,37 @@
+.FORM {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-normal);
+}
+
+.FORM > div {
+  font: var(--font-base-xs);
+  font-weight: bold;
+}
+
+.FORM > input[type="number"]::-webkit-outer-spin-button,
+.FORM > input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.FORM > input[type="number"] {
+  appearance: textfield;
+}
+
+.FORM > input {
+  cursor: pointer;
+  
+  border: 1px solid var(--color-gray-300);
+  color: var(--color-gray-900);
+  font: var(--font-base-sm);
+  padding: var(--spacing-large);
+}
+.FORM > input:focus {
+  color: var(--color-gray-900);
+  outline: none;
+}
+
+.FORM > input:disabled {
+  background-color: var(--color-gray-200);
+  cursor: not-allowed;
+}

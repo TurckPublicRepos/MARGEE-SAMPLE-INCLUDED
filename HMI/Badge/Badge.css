@@ -1,0 +1,178 @@
+.BADGE {
+  height: 32px;
+  width: min-content;
+  display: flex; justify-content: center; align-items: center;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 32px;
+}
+.BADGE > div {
+  font: var(--font-base-sm);
+  font-weight: bold;
+}
+.BADGE > div:first-child:not(svg) {
+  padding-left: var(--spacing-massive);
+}
+.BADGE > div:last-child:not(svg) {
+  padding-right: var(--spacing-massive);
+}
+.BADGE > svg {
+  height: 24px;
+  width: 24px;  
+  padding: var(--spacing-normal);
+}
+.BADGE.muted {
+  opacity: 0.3;
+}
+
+/* #region BADGE_BLACK */
+.BADGE_BLACK {
+  background-color: var(--color-surface-black-background);
+  color: var(--color-surface-black);
+  border-color: var(--color-surface-black-background);
+}
+.BADGE_BLACK > svg {
+  color: var(--color-surface-black);
+}
+.BADGE_BLACK.ghost {
+  background-color: var(--color-surface-black-ghost-background);
+  color: var(--color-surface-black-ghost);
+  border-color: var(--color-surface-black-ghost-background);
+}
+.BADGE_BLACK.ghost > svg {
+  color: var(--color-surface-black-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_PRIMARY */
+.BADGE_PRIMARY {
+  background-color: var(--color-surface-primary-background);
+  color: var(--color-surface-primary);
+  border-color: var(--color-surface-primary-background);
+}
+.BADGE_PRIMARY > svg {
+  color: var(--color-surface-primary);
+}
+.BADGE_PRIMARY.ghost {
+  background-color: var(--color-surface-primary-ghost-background);
+  color: var(--color-surface-primary-ghost);
+  border-color: var(--color-surface-primary-ghost-background);
+}
+.BADGE_PRIMARY.ghost > svg {
+  color: var(--color-surface-primary-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_SECONDARY */
+.BADGE_SECONDARY {
+  background-color: var(--color-surface-secondary-background);
+  color: var(--color-surface-secondary);
+  border-color: var(--color-surface-secondary-background);
+}
+.BADGE_SECONDARY > svg {
+  color: var(--color-surface-secondary);
+}
+.BADGE_SECONDARY.ghost {
+  background-color: var(--color-surface-secondary-ghost-background);
+  color: var(--color-surface-secondary-ghost);
+  border-color: var(--color-surface-secondary-ghost-background);
+}
+.BADGE_SECONDARY.ghost > svg {
+  color: var(--color-surface-secondary-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_TERTIARY */
+.BADGE_TERTIARY {
+  background-color: var(--color-surface-tertiary-background);
+  color: var(--color-surface-tertiary);
+  border-color: var(--color-surface-tertiary-background);
+}
+.BADGE_TERTIARY > svg {
+  color: var(--color-surface-tertiary);
+}
+.BADGE_TERTIARY.ghost {
+  background-color: var(--color-surface-tertiary-ghost-background);
+  color: var(--color-surface-tertiary-ghost);
+  border-color: var(--color-surface-tertiary-ghost-background);
+}
+.BADGE_TERTIARY.ghost > svg {
+  color: var(--color-surface-tertiary-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_DANGER */
+.BADGE_DANGER {
+  background-color: var(--color-surface-danger-background);
+  color: var(--color-surface-danger);
+  border-color: var(--color-surface-danger-background);
+}
+.BADGE_DANGER > svg {
+  color: var(--color-surface-danger);
+}
+.BADGE_DANGER.ghost {
+  background-color: var(--color-surface-danger-ghost-background);
+  color: var(--color-surface-danger-ghost);
+  border-color: var(--color-surface-danger-ghost-background);
+}
+.BADGE_DANGER.ghost > svg {
+  color: var(--color-surface-danger-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_INFORMATION */
+.BADGE_INFORMATION {
+  background-color: var(--color-surface-information-background);
+  color: var(--color-surface-information);
+  border-color: var(--color-surface-information-background);
+}
+.BADGE_INFORMATION > svg {
+  color: var(--color-surface-information);
+}
+.BADGE_INFORMATION.ghost {
+  background-color: var(--color-surface-information-ghost-background);
+  color: var(--color-surface-information-ghost);
+  border-color: var(--color-surface-information-ghost-background);
+}
+.BADGE_INFORMATION.ghost > svg {
+  color: var(--color-surface-information-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_WARNING */
+.BADGE_WARNING {
+  background-color: var(--color-surface-warning-background);
+  color: var(--color-surface-warning);
+  border-color: var(--color-surface-warning-background);
+}
+.BADGE_WARNING > svg {
+  color: var(--color-surface-warning);
+}
+.BADGE_WARNING.ghost {
+  background-color: var(--color-surface-warning-ghost-background);
+  color: var(--color-surface-warning-ghost);
+  border-color: var(--color-surface-warning-ghost-background);
+}
+.BADGE_WARNING.ghost > svg {
+  color: var(--color-surface-warning-ghost);
+}
+/* #endregion */
+
+/* #region BADGE_SUCCESS */
+.BADGE_SUCCESS {
+  background-color: var(--color-surface-success-background);
+  color: var(--color-surface-success);
+  border-color: var(--color-surface-success-background);
+}
+.BADGE_SUCCESS > svg {
+  color: var(--color-surface-success);
+}
+.BADGE_SUCCESS.ghost {
+  background-color: var(--color-surface-success-ghost-background);
+  color: var(--color-surface-success-ghost);
+  border-color: var(--color-surface-success-ghost-background);
+}
+.BADGE_SUCCESS.ghost > svg {
+  color: var(--color-surface-success-ghost);
+}
+/* #endregion */

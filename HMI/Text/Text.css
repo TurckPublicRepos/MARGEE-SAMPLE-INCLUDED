@@ -1,0 +1,20 @@
+.H1 { font: var(--font-display-6xl); }
+.H2 { font: var(--font-display-5xl); }
+.H3 { font: var(--font-display-4xl); }
+.H4 { font: var(--font-display-3xl); }
+.H5 { font: var(--font-display-2xl); }
+.SUBCOPY { font: var(--font-display-2xl); font-weight: lighter; }
+
+.TEXT.text-xs { font: var(--font-base-xs); }
+.TEXT.text-sm { font: var(--font-base-sm); }
+.TEXT.text-nm { font: var(--font-base-nm); }
+.TEXT.text-lg { font: var(--font-base-lg); }
+.TEXT_MONOSPACE.text-xs { font: var(--font-mono-xs); }
+.TEXT_MONOSPACE.text-sm { font: var(--font-mono-sm); }
+.TEXT_MONOSPACE.text-nm { font: var(--font-mono-nm); }
+.TEXT_MONOSPACE.text-lg { font: var(--font-mono-lg); }
+
+.H1, .H2, .H3, .H4, .H5, .H6, .TEXT, .TEXT_MONOSPACE {
+  overflow: hidden;
+  overflow-wrap: break-word;
+}

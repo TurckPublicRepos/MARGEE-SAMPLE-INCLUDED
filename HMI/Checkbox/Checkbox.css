@@ -1,0 +1,41 @@
+.CHECKBOX {
+  width: min-content;
+  display: flex; justify-content: center; align-items: center;
+  gap: var(--spacing-normal);
+}
+.CHECKBOX > div {
+  font: var(--font-base-sm);
+}
+
+.CHECKBOX > input {
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-color: var(--color-gray-300);
+  background-color: var(--color-gray-300);
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.CHECKBOX > input:not(:checked) {
+  background-image: none !important;
+}
+
+.CHECKBOX > input:disabled {
+  border-color: var(--color-gray-500);
+  background-color: var(--color-gray-500);
+  cursor: not-allowed;
+}
+.CHECKBOX > input:hover:not(:disabled) {
+  border-color: var(--color-gray-500);
+  background-color: var(--color-gray-500);
+}
+
+.CHECKBOX > input:not(:disabled):checked {
+  border-color: var(--color-gray-900);
+  background-color: var(--color-gray-900);
+}
+.CHECKBOX > input:not(:enabled):checked {
+  border-color: var(--color-gray-500);
+  background-color: var(--color-gray-500);
+}

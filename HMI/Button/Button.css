@@ -1,0 +1,267 @@
+/* #region Sizing */
+
+/* #region BUTTON_SIZE_MASSIVE */
+.BUTTON_SIZE_MASSIVE {
+  height: 64px;
+  font: var(--font-base-lg);
+  font-weight: bold;
+  padding: 0 var(--spacing-massive) 0 var(--spacing-massive);
+  display: flex; justify-content: center; align-items: center;
+  border-style: solid;
+  border-width: 3px;
+}
+.BUTTON_SIZE_MASSIVE > svg {
+  height: 32px;
+  width: 32px;
+}
+/* #endregion */
+
+/* #region BUTTON_SIZE_LARGE */
+.BUTTON_SIZE_LARGE {
+  height: 50px;
+  font: var(--font-base-md);
+  font-weight: bold;
+  padding: 0 var(--spacing-large) 0 var(--spacing-large);
+  display: flex; justify-content: center; align-items: center;
+  border-style: solid;
+  border-width: 3px;
+}
+.BUTTON_SIZE_LARGE > svg {
+  height: 30px;
+  width: 30px;
+}
+/* #endregion */
+
+/* #region BUTTON_SIZE_NORMAL */
+.BUTTON_SIZE_NORMAL {
+  height: 38px;
+  font: var(--font-base-md);
+  font-weight: bold;
+  padding: 0 var(--spacing-normal) 0 var(--spacing-normal);
+  display: flex; justify-content: center; align-items: center;
+  border-style: solid;
+  border-width: 3px;
+}
+.BUTTON_SIZE_NORMAL > svg {
+  height: 28px;
+  width: 28px;
+}
+/* #endregion */
+
+/* #region BUTTON_SIZE_SMALL */
+.BUTTON_SIZE_SMALL {
+  height: 32px;
+  font: var(--font-base-sm);
+  font-weight: bold;
+  padding: 0 var(--spacing-small) 0 var(--spacing-small);
+  display: flex; justify-content: center; align-items: center;
+  border-style: solid;
+  border-width: 2px;
+}
+.BUTTON_SIZE_SMALL > svg {
+  height: 24px;
+  width: 24px;
+}
+/* #endregion */
+
+/* #endregion */
+
+/* #region STYLES */
+
+/* #region BUTTON_STYLE_PRIMARY */
+.BUTTON_STYLE_PRIMARY {
+  background-color: var(--color-primary-100);
+  color: var(--color-gray-950);
+  border-color: var(--color-primary-100);
+}
+
+.BUTTON_STYLE_PRIMARY > svg {
+  color: var(--color-secondary-100)
+}
+.BUTTON_STYLE_PRIMARY:hover:not(:disabled) {
+  background-color: var(--color-primary-70);
+  border-color: var(--color-primary-70);
+}
+.BUTTON_STYLE_PRIMARY:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+.BUTTON_STYLE_PRIMARY:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.BUTTON_STYLE_PRIMARY.ghost {
+  background-color: var(--color-gray-50);
+}
+.BUTTON_STYLE_PRIMARY.ghost > svg {
+  color: var(--color-gray-950)
+}
+.BUTTON_STYLE_PRIMARY.ghost:hover:not(:disabled) {
+  background-color: var(--color-primary-100);
+  border-color: var(--color-primary-100);
+}
+.BUTTON_STYLE_PRIMARY.ghost:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+/* #endregion */
+
+/* #region BUTTON_STYLE_SECONDARY */
+.BUTTON_STYLE_SECONDARY {
+  background-color: var(--color-secondary-100);
+  color: var(--color-gray-50);
+  border-color: var(--color-secondary-100);
+}
+.BUTTON_STYLE_SECONDARY > svg {
+  color: var(--color-primary-950)
+}
+.BUTTON_STYLE_SECONDARY:hover:not(:disabled) {
+  background-color: var(--color-secondary-70);
+  border-color: var(--color-secondary-70);
+}
+.BUTTON_STYLE_SECONDARY:active:not(:disabled) {
+  border-color: var(--color-primary-100);
+}
+.BUTTON_STYLE_SECONDARY:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.BUTTON_STYLE_SECONDARY.ghost {
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-950);
+}
+.BUTTON_STYLE_SECONDARY.ghost > svg {
+  color: var(--color-gray-950)
+}
+.BUTTON_STYLE_SECONDARY.ghost:hover:not(:disabled) {
+  background-color: var(--color-secondary-100);
+  color: var(--color-gray-50);
+  border-color: var(--color-secondary-100);
+}
+.BUTTON_STYLE_SECONDARY.ghost:hover:not(:disabled) > svg {
+  color: var(--color-gray-50)
+}
+.BUTTON_STYLE_SECONDARY.ghost:active:not(:disabled) {
+  border-color: var(--color-primary-100);
+}
+/* #endregion */
+
+/* #region BUTTON_STYLE_BLACK */
+.BUTTON_STYLE_BLACK {
+  background-color: var(--color-gray-950);
+  color: var(--color-gray-50);
+  border-color: var(--color-gray-950);
+}
+.BUTTON_STYLE_BLACK > svg {
+  color: var(--color-primary-100)
+}
+.BUTTON_STYLE_BLACK:hover:not(:disabled) {
+  background-color: var(--color-gray-600);
+  border-color: var(--color-gray-600);
+}
+.BUTTON_STYLE_BLACK:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+.BUTTON_STYLE_BLACK:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.BUTTON_STYLE_BLACK.ghost {
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-950);
+}
+.BUTTON_STYLE_BLACK.ghost > svg {
+  color: var(--color-gray-950)
+}
+.BUTTON_STYLE_BLACK.ghost:hover:not(:disabled) {
+  background-color: var(--color-gray-950);
+  color: var(--color-gray-50);
+  border-color: var(--color-gray-950);
+}
+.BUTTON_STYLE_BLACK.ghost:hover:not(:disabled) > svg {
+  color: var(--color-gray-50)
+}
+.BUTTON_STYLE_BLACK.ghost:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+/* #endregion */
+
+/* #region BUTTON_STYLE_DARK_GRAY */
+.BUTTON_STYLE_DARK_GRAY {
+  background-color: var(--color-gray-500);
+  color: var(--color-gray-50);
+  border-color: var(--color-gray-500);
+}
+.BUTTON_STYLE_DARK_GRAY > svg {
+  color: var(--color-primary-100)
+}
+.BUTTON_STYLE_DARK_GRAY:hover:not(:disabled) {
+  background-color: var(--color-gray-400);
+  border-color: var(--color-gray-400);
+}
+.BUTTON_STYLE_DARK_GRAY:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+.BUTTON_STYLE_DARK_GRAY:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.BUTTON_STYLE_DARK_GRAY.ghost {
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-500);
+}
+.BUTTON_STYLE_DARK_GRAY.ghost > svg {
+  color: var(--color-gray-500)
+}
+.BUTTON_STYLE_DARK_GRAY.ghost:hover:not(:disabled) {
+  background-color: var(--color-gray-500);
+  color: var(--color-gray-50);
+  border-color: var(--color-gray-500);
+}
+.BUTTON_STYLE_DARK_GRAY.ghost:hover:not(:disabled) > svg {
+  color: var(--color-gray-50)
+}
+.BUTTON_STYLE_DARK_GRAY.ghost:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+/* #endregion */
+
+/* #region BUTTON_STYLE_LIGHT_GRAY */
+.BUTTON_STYLE_LIGHT_GRAY {
+  background-color: var(--color-gray-300);
+  color: var(--color-gray-950);
+  border-color: var(--color-gray-300);
+}
+.BUTTON_STYLE_LIGHT_GRAY > svg {
+  color: var(--color-secondary-100)
+}
+.BUTTON_STYLE_LIGHT_GRAY:hover:not(:disabled) {
+  background-color: var(--color-gray-400);
+  border-color: var(--color-gray-400);
+}
+.BUTTON_STYLE_LIGHT_GRAY:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+.BUTTON_STYLE_LIGHT_GRAY:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.BUTTON_STYLE_LIGHT_GRAY.ghost {
+  background-color: var(--color-gray-50);
+}
+.BUTTON_STYLE_LIGHT_GRAY.ghost > svg {
+  color: var(--color-gray-950)
+}
+.BUTTON_STYLE_LIGHT_GRAY.ghost:hover:not(:disabled) {
+  background-color: var(--color-gray-400);
+  border-color: var(--color-gray-400);
+}
+.BUTTON_STYLE_LIGHT_GRAY.ghost:active:not(:disabled) {
+  border-color: var(--color-secondary-100);
+}
+/* #endregion */
+
+/* #endregion */

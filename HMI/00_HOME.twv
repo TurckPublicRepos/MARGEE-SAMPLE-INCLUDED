@@ -1,0 +1,128 @@
+HMI_SCREEN("HOME") 
+  HMI_GRID("1fr 1fr 1fr 1fr", "min-content min-content min-content", "1rem")<pm>
+    HMI_CONTAINER(1, 4, 1, 1)<pm-l> H1("MARGEE", 1); ;
+    HMI_CONTAINER(1, 4, 2, 1)<pm-l> SUBCOPY("MARGEE Sample HMI. This is a sample interface, showing various UI components and their interactions."); ;
+
+    // COLUMN ONE
+    HMI_CONTAINER(1, 1, 3, 1) HMI_GRID("", "", "1rem")
+      HMI_CONTAINER(1, 1, 1, 1)<pm color-gray-300-border> 
+        HMI_CONTAINER(0, 0, 1, 1)
+          H5("MACHINE STATUS", 1);
+        ;
+
+        HMI_CONTAINER(0, 0, 2, 1, 2#1, gMachineRunning)<mm-t display-flex align-center>
+          BADGE_SUCCESS("RUNNING", "", 0, 0, 0);
+          BUTTON_NORMAL_BLACK(gMachineRunning, 0, "STOP MACHINE", "onoff.svg", 0, 0)<mm-l>; 
+        ;
+
+        HMI_CONTAINER(0, 0, 2, 1, 2#0, gMachineRunning)<mm-t display-flex align-center>
+          BADGE_DANGER("STOPPED", "", 0, 0, 0);
+          BUTTON_NORMAL_BLACK(gMachineRunning, 1, "START MACHINE", "onoff.svg", 0, 0)<mm-l>; 
+        ;
+      ;
+      
+      HMI_CONTAINER(1, 1, 2, 1)<pm color-gray-300-border> 
+        HMI_CONTAINER(0, 0, 1, 1)
+          H5("MACHINE INFO", 1);
+        ;
+
+        GOM_STRING(16#00490011, 0, "PROJECT NAME: ")<mm-t>;
+        GOM_VERSION(16#00420001, 0, "FIRMWARE REVISION: ")<mn-t>;
+        GOM_VERSION(16#490000, 1, "RUNTIME REVISION: ")<mn-t>;
+      ;
+      
+      HMI_CONTAINER(1, 1, 3, 1)<pm color-gray-300-border> 
+        HMI_CONTAINER(0, 0, 1, 1)
+          H5("NETWORK INFO", 1);
+        ;
+
+        GOM_IP(16#000F0001, 16#0, "IP ADDRESS: ")<mm-t>;
+        GOM_IP(16#000F0002, 16#0, "SUBNET MASK: ")<mn-t>;
+        GOM_IP(16#000F0003, 16#0, "GATEWAY: ")<mn-t>;
+        GOM_MAC(16#000F0004, 16#0, "MAC ADDRESS: ")<mm-t>;
+      ;
+    ; ;
+
+    // COLUMN TWO/THREE
+    HMI_CONTAINER(2, 2, 3, 1) HMI_GRID("", "", "1rem")
+      HMI_CONTAINER(1, 1, 1, 5)<pm color-gray-300-border>
+        HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
+          H5("TANK ONE", 1);
+          TOGGLE(gStTank1.enabled, "ON/OFF");
+        ;
+
+        GAUGE_PRIMARY(gStTank1.level, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank1.fillSpeed, "FILL SPEED")<mm-t>;
+      ;
+
+      HMI_CONTAINER(1, 1, 6, 5)<pm color-gray-300-border>
+        HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
+          H5("TANK TWO", 1);
+          TOGGLE(gStTank2.enabled, "ON/OFF");
+        ;
+
+        GAUGE_TERTIARY(gStTank2.level, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank2.fillSpeed, "FILL SPEED")<mm-t>;
+      ;
+
+      HMI_CONTAINER(2, 1, 1, 2)<pm color-gray-300-border>
+        HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
+          H5("TANK THREE", 1);
+          TOGGLE(gStTank3.enabled, "ON/OFF");
+        ;
+
+        BAR_SECONDARY(gStTank3.level, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank3.fillSpeed, "FILL SPEED")<mm-t>;
+      ;
+
+      HMI_CONTAINER(2, 1, 3, 2)<pm color-gray-300-border>
+        HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
+          H5("TANK FOUR", 1);
+          TOGGLE(gStTank4.enabled, "ON/OFF");
+        ;
+
+        BAR_TERTIARY(gStTank4.level, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank4.fillSpeed, "FILL SPEED")<mm-t>;
+      ;
+
+      HMI_CONTAINER(2, 1, 5, 5)<pm color-gray-300-border>
+        HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
+          H5("TANK FIVE", 1);
+          TOGGLE(gStTank5.enabled, "ON/OFF");
+        ;
+
+        GAUGE_SECONDARY(gStTank5.level, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank5.fillSpeed, "FILL SPEED")<mm-t>;
+      ;
+    ; ;
+
+    // COLUMN FOUR
+    HMI_CONTAINER(4, 1, 3, 1) HMI_GRID()<pm color-gray-300-border>
+        HMI_CONTAINER(1, 4, 1, 1)<mm-b> H5("ENABLE/DISABLE OUTPUTS", 1); ;
+
+        HMI_CONTAINER(2, 1, 2, 1)<mn-x center-content> TEXT("ENABLE", 0, 2); ;
+        HMI_CONTAINER(3, 1, 2, 1)<mn-x center-content> TEXT("ON TIME", 0, 2); ;
+        HMI_CONTAINER(4, 1, 2, 1)<mn-x center-content> TEXT("OFF TIME", 0, 2); ;
+
+        HMI_CONTAINER(1, 1, 3, 1)<mn-x center-content> CHECKBOX(gOutput1.value, "", 1); ;
+        HMI_CONTAINER(2, 1, 3, 1)<mn-x center-content> TOGGLE(gOutput1.enabled, ""); ;
+        HMI_CONTAINER(3, 1, 3, 1)<mn-x> FORM(gOutput1.onTime, ""); ;
+        HMI_CONTAINER(4, 1, 3, 1)<mn-x> FORM(gOutput1.offTime, ""); ;
+
+        HMI_CONTAINER(1, 1, 4, 1)<mn-x center-content> CHECKBOX(gOutput2.value, "", 1); ;
+        HMI_CONTAINER(2, 1, 4, 1)<mn-x center-content> TOGGLE(gOutput2.enabled, ""); ;
+        HMI_CONTAINER(3, 1, 4, 1)<mn-x> FORM(gOutput2.onTime, ""); ;
+        HMI_CONTAINER(4, 1, 4, 1)<mn-x> FORM(gOutput2.offTime, ""); ;
+        
+        HMI_CONTAINER(1, 1, 5, 1)<mn-x center-content> CHECKBOX(gOutput3.value, "", 1); ;
+        HMI_CONTAINER(2, 1, 5, 1)<mn-x center-content> TOGGLE(gOutput3.enabled, ""); ;
+        HMI_CONTAINER(3, 1, 5, 1)<mn-x> FORM(gOutput3.onTime, ""); ;
+        HMI_CONTAINER(4, 1, 5, 1)<mn-x> FORM(gOutput3.offTime, ""); ;
+        
+        HMI_CONTAINER(1, 1, 6, 1)<mn-x center-content> CHECKBOX(gOutput4.value, "", 1); ;
+        HMI_CONTAINER(2, 1, 6, 1)<mn-x center-content> TOGGLE(gOutput4.enabled, ""); ;
+        HMI_CONTAINER(3, 1, 6, 1)<mn-x> FORM(gOutput4.onTime, ""); ;
+        HMI_CONTAINER(4, 1, 6, 1)<mn-x> FORM(gOutput4.offTime, ""); ;
+    ; ;
+  ;
+;

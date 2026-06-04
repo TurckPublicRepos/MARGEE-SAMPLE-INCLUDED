@@ -1,0 +1,16 @@
+HMI_SCREEN("SETTINGS")
+    HMI_GRID("1fr 1fr 1fr 1fr 1fr", "min-content min-content 1fr", "1rem")<pm full-height>
+        HMI_CONTAINER(1, 5, 1, 1)<pm-l> H1("SETTINGS", 1); ;
+    
+        HMI_CONTAINER(1, 5, 2, 1)<pm-l> H5("PASSWORD MANAGEMENT", 1); ;
+        HMI_CONTAINER(1, 1, 3, 1, 1)<pm-l> HMI_USER_CONTAINER([1]) TEXT("USER LEVEL ONE", 1, 2); CHANGE_PASSWORD(1); ; ;
+        HMI_CONTAINER(2, 1, 3, 1, 1)<pm-l> HMI_USER_CONTAINER([1, 2]) TEXT("USER LEVEL TWO", 1, 2); CHANGE_PASSWORD(2); ; ;
+        HMI_CONTAINER(3, 1, 3, 1, 1)<pm-l> HMI_USER_CONTAINER([1, 3]) TEXT("USER LEVEL THREE", 1, 2); CHANGE_PASSWORD(3); ; ;
+        HMI_CONTAINER(4, 1, 3, 1, 1)<pm-l> HMI_USER_CONTAINER([1, 4]) TEXT("USER LEVEL FOUR", 1, 2); CHANGE_PASSWORD(4); ; ;
+        HMI_CONTAINER(5, 1, 3, 1, 1)<pm-l> HMI_USER_CONTAINER([1, 5]) TEXT("USER LEVEL FIVE", 1, 2); CHANGE_PASSWORD(5); ; ;
+
+        HMI_CONTAINER(1, 2, 6, 1)<pm-l> SIGN_IN(); ;
+    ;
+  ;
+;      
+   
