@@ -24,7 +24,7 @@ export class GAUGE_PRIMARY implements ELEMENT {
     r="50"
     cx="50%"
     cy="50%"
-    stroke="var(--color-primary-40)"
+    stroke="var(--color-primary-10)"
     stroke-width="10"
     fill="none"
   /> 
@@ -67,7 +67,7 @@ export class GAUGE_SECONDARY implements ELEMENT {
     r="50"
     cx="50%"
     cy="50%"
-    stroke="var(--color-secondary-40)"
+    stroke="var(--color-secondary-10)"
     stroke-width="10"
     fill="none"
   /> 
@@ -110,7 +110,7 @@ export class GAUGE_TERTIARY implements ELEMENT {
     r="50"
     cx="50%"
     cy="50%"
-    stroke="var(--color-tertiary-40)"
+    stroke="var(--color-tertiary-10)"
     stroke-width="10"
     fill="none"
   /> 

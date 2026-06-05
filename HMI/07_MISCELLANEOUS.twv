@@ -4,30 +4,30 @@ HMI_SCREEN("MISCELLANEOUS")
 
     HMI_CONTAINER(1, 1, 2, 2)
       HMI_GRID("", "1fr 1fr")<color-gray-300-border> 
-        HMI_CONTAINER(1, 1, 1, 1) FORM(FORM_VAL, "Form Field")<mm>; ;
-        HMI_CONTAINER(1, 1, 2, 1) FORM(FORM_VAL, "Form Field Disabled", 1)<mm>; ;
+        HMI_CONTAINER(1, 1, 1, 1) FORM(usiFormSample, "Form Field")<mm>; ;
+        HMI_CONTAINER(1, 1, 2, 1) FORM(usiFormSample, "Form Field Disabled", 1)<mm>; ;
       ;
     ;
 
     HMI_CONTAINER(1, 1, 4, 2)
       HMI_GRID("", "1fr 1fr")<color-gray-300-border>
-        HMI_CONTAINER(1, 1, 1, 1) DROPDOWN(DROPDOWN_VAL, "Dropdown Field", [0,1,2,3,4], "Option 0|Option 1|Option 2")<mm>; ;
-        HMI_CONTAINER(1, 1, 2, 1) DROPDOWN(DROPDOWN_VAL, "Dropdown Field Disabled", [0,1,2,3,4], "Option 0|Option 1|Option 2", 1)<mm>; ;
+        HMI_CONTAINER(1, 1, 1, 1) DROPDOWN(usiDropdownSample, "Dropdown Field", [0,1,2,3,4], "Option 0|Option 1|Option 2")<mm>; ;
+        HMI_CONTAINER(1, 1, 2, 1) DROPDOWN(usiDropdownSample, "Dropdown Field Disabled", [0,1,2,3,4], "Option 0|Option 1|Option 2", 1)<mm>; ;
       ;
     ;   
 
 
     HMI_CONTAINER(2, 1, 2, 1)<center-content color-gray-300-border> 
       HMI_GRID("1fr 1fr 1fr")
-        HMI_CONTAINER(1, 1, 1, 1) CHECKBOX(CHECKBOX_VAL, "Checkox name")<mm>; ; 
-        HMI_CONTAINER(3, 1, 1, 1) CHECKBOX(CHECKBOX_VAL, "Checkox Disabled", 1)<mm>; ; 
+        HMI_CONTAINER(1, 1, 1, 1) CHECKBOX(usiCheckboxSample, "Checkox name")<mm>; ; 
+        HMI_CONTAINER(3, 1, 1, 1) CHECKBOX(usiCheckboxSample, "Checkox Disabled", 1)<mm>; ; 
       ;
     ;
 
     HMI_CONTAINER(2, 1, 3, 1)<center-content color-gray-300-border>
       HMI_GRID("1fr 1fr 1fr")
-        HMI_CONTAINER(1, 1, 1, 1) TOGGLE(TOGGLE_VAL, "Toggle name")<mm>; ;
-        HMI_CONTAINER(3, 1, 1, 1) TOGGLE(TOGGLE_VAL, "Toggle Disabled", 1)<mm>; ;
+        HMI_CONTAINER(1, 1, 1, 1) TOGGLE(usiToggleSample, "Toggle name")<mm>; ;
+        HMI_CONTAINER(3, 1, 1, 1) TOGGLE(usiToggleSample, "Toggle Disabled", 1)<mm>; ;
       ;
     ;     
 

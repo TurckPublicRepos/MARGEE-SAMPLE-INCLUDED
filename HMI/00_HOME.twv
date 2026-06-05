@@ -10,14 +10,14 @@ HMI_SCREEN("HOME")
           H5("MACHINE STATUS", 1);
         ;
 
-        HMI_CONTAINER(0, 0, 2, 1, 2#1, gMachineRunning)<mm-t display-flex align-center>
+        HMI_CONTAINER(0, 0, 2, 1, 2#1, gusiMachineRunning)<mm-t display-flex align-center>
           BADGE_SUCCESS("RUNNING", "", 0, 0, 0);
-          BUTTON_NORMAL_BLACK(gMachineRunning, 0, "STOP MACHINE", "onoff.svg", 0, 0)<mm-l>; 
+          BUTTON_NORMAL_BLACK(gusiMachineRunning, 0, "STOP MACHINE", "onoff.svg", 0, 0)<mm-l>; 
         ;
 
-        HMI_CONTAINER(0, 0, 2, 1, 2#0, gMachineRunning)<mm-t display-flex align-center>
+        HMI_CONTAINER(0, 0, 2, 1, 2#0, gusiMachineRunning)<mm-t display-flex align-center>
           BADGE_DANGER("STOPPED", "", 0, 0, 0);
-          BUTTON_NORMAL_BLACK(gMachineRunning, 1, "START MACHINE", "onoff.svg", 0, 0)<mm-l>; 
+          BUTTON_NORMAL_BLACK(gusiMachineRunning, 1, "START MACHINE", "onoff.svg", 0, 0)<mm-l>; 
         ;
       ;
       
@@ -48,51 +48,51 @@ HMI_SCREEN("HOME")
       HMI_CONTAINER(1, 1, 1, 5)<pm color-gray-300-border>
         HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
           H5("TANK ONE", 1);
-          TOGGLE(gStTank1.enabled, "ON/OFF");
+          TOGGLE(gStTank1.usiEnabled, "ON/OFF");
         ;
 
-        GAUGE_PRIMARY(gStTank1.level, 0, 16#ffffffff, "")<ml-t>;
-        FORM(gStTank1.fillSpeed, "FILL SPEED")<mm-t>;
+        GAUGE_PRIMARY(gStTank1.udiLevel, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank1.udiFillSpeed, "FILL SPEED")<mm-t>;
       ;
 
       HMI_CONTAINER(1, 1, 6, 5)<pm color-gray-300-border>
         HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
           H5("TANK TWO", 1);
-          TOGGLE(gStTank2.enabled, "ON/OFF");
+          TOGGLE(gStTank2.usiEnabled, "ON/OFF");
         ;
 
-        GAUGE_TERTIARY(gStTank2.level, 0, 16#ffffffff, "")<ml-t>;
-        FORM(gStTank2.fillSpeed, "FILL SPEED")<mm-t>;
+        GAUGE_TERTIARY(gStTank2.udiLevel, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank2.udiFillSpeed, "FILL SPEED")<mm-t>;
       ;
 
       HMI_CONTAINER(2, 1, 1, 2)<pm color-gray-300-border>
         HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
           H5("TANK THREE", 1);
-          TOGGLE(gStTank3.enabled, "ON/OFF");
+          TOGGLE(gStTank3.usiEnabled, "ON/OFF");
         ;
 
-        BAR_SECONDARY(gStTank3.level, 0, 16#ffffffff, "")<ml-t>;
-        FORM(gStTank3.fillSpeed, "FILL SPEED")<mm-t>;
+        BAR_SECONDARY(gStTank3.udiLevel, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank3.udiFillSpeed, "FILL SPEED")<mm-t>;
       ;
 
       HMI_CONTAINER(2, 1, 3, 2)<pm color-gray-300-border>
         HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
           H5("TANK FOUR", 1);
-          TOGGLE(gStTank4.enabled, "ON/OFF");
+          TOGGLE(gStTank4.usiEnabled, "ON/OFF");
         ;
 
-        BAR_TERTIARY(gStTank4.level, 0, 16#ffffffff, "")<ml-t>;
-        FORM(gStTank4.fillSpeed, "FILL SPEED")<mm-t>;
+        BAR_TERTIARY(gStTank4.udiLevel, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank4.udiFillSpeed, "FILL SPEED")<mm-t>;
       ;
 
       HMI_CONTAINER(2, 1, 5, 5)<pm color-gray-300-border>
         HMI_CONTAINER(1, 1, 1, 1)<display-flex align-center justify-space-between>
           H5("TANK FIVE", 1);
-          TOGGLE(gStTank5.enabled, "ON/OFF");
+          TOGGLE(gStTank5.usiEnabled, "ON/OFF");
         ;
 
-        GAUGE_SECONDARY(gStTank5.level, 0, 16#ffffffff, "")<ml-t>;
-        FORM(gStTank5.fillSpeed, "FILL SPEED")<mm-t>;
+        GAUGE_SECONDARY(gStTank5.udiLevel, 0, 16#ffffffff, "")<ml-t>;
+        FORM(gStTank5.udiFillSpeed, "FILL SPEED")<mm-t>;
       ;
     ; ;
 
@@ -104,25 +104,25 @@ HMI_SCREEN("HOME")
         HMI_CONTAINER(3, 1, 2, 1)<mn-x center-content> TEXT("ON TIME", 0, 2); ;
         HMI_CONTAINER(4, 1, 2, 1)<mn-x center-content> TEXT("OFF TIME", 0, 2); ;
 
-        HMI_CONTAINER(1, 1, 3, 1)<mn-x center-content> CHECKBOX(gOutput1.value, "", 1); ;
-        HMI_CONTAINER(2, 1, 3, 1)<mn-x center-content> TOGGLE(gOutput1.enabled, ""); ;
-        HMI_CONTAINER(3, 1, 3, 1)<mn-x> FORM(gOutput1.onTime, ""); ;
-        HMI_CONTAINER(4, 1, 3, 1)<mn-x> FORM(gOutput1.offTime, ""); ;
+        HMI_CONTAINER(1, 1, 3, 1)<mn-x center-content> CHECKBOX(gStOutput1.usiValue, "", 1); ;
+        HMI_CONTAINER(2, 1, 3, 1)<mn-x center-content> TOGGLE(gStOutput1.usiEnabled, ""); ;
+        HMI_CONTAINER(3, 1, 3, 1)<mn-x> FORM(gStOutput1.udiOnTime, ""); ;
+        HMI_CONTAINER(4, 1, 3, 1)<mn-x> FORM(gStOutput1.udiOffTime, ""); ;
 
-        HMI_CONTAINER(1, 1, 4, 1)<mn-x center-content> CHECKBOX(gOutput2.value, "", 1); ;
-        HMI_CONTAINER(2, 1, 4, 1)<mn-x center-content> TOGGLE(gOutput2.enabled, ""); ;
-        HMI_CONTAINER(3, 1, 4, 1)<mn-x> FORM(gOutput2.onTime, ""); ;
-        HMI_CONTAINER(4, 1, 4, 1)<mn-x> FORM(gOutput2.offTime, ""); ;
+        HMI_CONTAINER(1, 1, 4, 1)<mn-x center-content> CHECKBOX(gStOutput2.usiValue, "", 1); ;
+        HMI_CONTAINER(2, 1, 4, 1)<mn-x center-content> TOGGLE(gStOutput2.usiEnabled, ""); ;
+        HMI_CONTAINER(3, 1, 4, 1)<mn-x> FORM(gStOutput2.udiOnTime, ""); ;
+        HMI_CONTAINER(4, 1, 4, 1)<mn-x> FORM(gStOutput2.udiOffTime, ""); ;
         
-        HMI_CONTAINER(1, 1, 5, 1)<mn-x center-content> CHECKBOX(gOutput3.value, "", 1); ;
-        HMI_CONTAINER(2, 1, 5, 1)<mn-x center-content> TOGGLE(gOutput3.enabled, ""); ;
-        HMI_CONTAINER(3, 1, 5, 1)<mn-x> FORM(gOutput3.onTime, ""); ;
-        HMI_CONTAINER(4, 1, 5, 1)<mn-x> FORM(gOutput3.offTime, ""); ;
+        HMI_CONTAINER(1, 1, 5, 1)<mn-x center-content> CHECKBOX(gStOutput3.usiValue, "", 1); ;
+        HMI_CONTAINER(2, 1, 5, 1)<mn-x center-content> TOGGLE(gStOutput3.usiEnabled, ""); ;
+        HMI_CONTAINER(3, 1, 5, 1)<mn-x> FORM(gStOutput3.udiOnTime, ""); ;
+        HMI_CONTAINER(4, 1, 5, 1)<mn-x> FORM(gStOutput3.udiOffTime, ""); ;
         
-        HMI_CONTAINER(1, 1, 6, 1)<mn-x center-content> CHECKBOX(gOutput4.value, "", 1); ;
-        HMI_CONTAINER(2, 1, 6, 1)<mn-x center-content> TOGGLE(gOutput4.enabled, ""); ;
-        HMI_CONTAINER(3, 1, 6, 1)<mn-x> FORM(gOutput4.onTime, ""); ;
-        HMI_CONTAINER(4, 1, 6, 1)<mn-x> FORM(gOutput4.offTime, ""); ;
+        HMI_CONTAINER(1, 1, 6, 1)<mn-x center-content> CHECKBOX(gStOutput4.usiValue, "", 1); ;
+        HMI_CONTAINER(2, 1, 6, 1)<mn-x center-content> TOGGLE(gStOutput4.usiEnabled, ""); ;
+        HMI_CONTAINER(3, 1, 6, 1)<mn-x> FORM(gStOutput4.udiOnTime, ""); ;
+        HMI_CONTAINER(4, 1, 6, 1)<mn-x> FORM(gStOutput4.udiOffTime, ""); ;
     ; ;
   ;
 ;
