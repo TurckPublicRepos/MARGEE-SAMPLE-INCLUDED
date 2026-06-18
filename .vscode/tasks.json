@@ -12,6 +12,16 @@
       "label": "Start MARGEE Live Preview",
       "command": "${command:MARGEE.startHMILivePreview}",
       "problemMatcher": []
+    },
+    {
+      "label": "Start MARGEE Live Preview (attach)",
+      "command": "${command:MARGEE.startHMILivePreviewAttached}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop MARGEE Live Preview",
+      "command": "${command:MARGEE.stopHMILivePreview}",
+      "problemMatcher": []
     }
   ]
 }

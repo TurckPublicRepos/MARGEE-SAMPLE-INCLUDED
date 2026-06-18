@@ -16,7 +16,7 @@ END_VAR
 STRUCT TANK 
   usiEnabled            : USINT := 1;
   udiFillSpeed          : UDINT := 16#0000FFFF;
-  udiLevel              : UDINT := 16#8FFFFFFF;
+  udiLevel              : UDINT := 16#3FFFFFFF;
 END_STRUCT
 
 STRUCT OUTPUT 
@@ -36,10 +36,10 @@ VAR_GLOBAL
 END_VAR
 
 VAR_ALIAS
-  ioOUTPUT_1            : ALIAS_IO(Output_Basic_DXP_Output_value_1);
-  ioOUTPUT_2            : ALIAS_IO(Output_Basic_DXP_Output_value_2);
-  ioOUTPUT_3            : ALIAS_IO(Output_Basic_DXP_Output_value_3);
-  ioOUTPUT_4            : ALIAS_IO(Output_Basic_DXP_Output_value_4);
+  ioOUTPUT_1            : ALIAS_IO(Output_Basic_Output_value);
+  ioOUTPUT_2            : ALIAS_IO(Output_Basic_Output_value_1);
+  ioOUTPUT_3            : ALIAS_IO(Output_Basic_Output_value_2);
+  ioOUTPUT_4            : ALIAS_IO(Output_Basic_Output_value_3);
 END_VAR
 
 TASK mainTask   
@@ -74,11 +74,6 @@ FUNCTION OUTPUT_CONTROL: USINT
   VAR_IN_OUT
     stOutput          : OUTPUT;
   END_VAR
-  VAR
-    stOutTestArr    : ARRAY[0..4] OF OUTPUT; // Local array to test if passing structure by reference works correctly.
-  END_VAR
-
-  stOutTestArr[0].udiOffTime := stOutTestArr[0].udiOffTime + 1;
 
   IF (stOutput.usiEnabled & outputValue = 0 & EXPIRED(stOutput.tTimer)) THEN
     OUTPUT_CONTROL := 1;
@@ -87,7 +82,6 @@ FUNCTION OUTPUT_CONTROL: USINT
     OUTPUT_CONTROL := 0;
     START_TIMER(stOutput.tTimer, stOutput.udiOffTime);
   ELSIF (stOutput.usiEnabled = 0) THEN
-    START_TIMER(stOutput.tTimer, 0);
     OUTPUT_CONTROL := 0;
   ELSE 
     OUTPUT_CONTROL := outputValue;

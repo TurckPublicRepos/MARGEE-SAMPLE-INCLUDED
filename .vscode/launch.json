@@ -3,22 +3,37 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "RUNTIME & HMI",
+      "configurations": ["RUNTIME", "HMI (attach)"]
+    }
+  ],
   "configurations": [
     {
+      "name": "RUNTIME",
       "type": "MARGEE",
       "request": "launch",
-      "name": "Default debugger",
       "RefreshInterval": 250,
-      "serverReadyAction":{
-        "action": "debugWithChrome",
-      }
     }, 
     {
-      "type": "chrome",
-      "request": "launch", 
-      "name": "Visualisation Preview",
+      "name": "HMI",
+      "type": "msedge",
+      "request": "launch",
       "url": "http://localhost:${config:MARGEE.Port}",
-      "preLaunchTask": "Start MARGEE Live Preview"
-    }
-  ]
+      "preLaunchTask": "Start MARGEE Live Preview",
+      "postDebugTask": "Stop MARGEE Live Preview",
+    },
+    {
+      "name": "HMI (attach)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:${config:MARGEE.Port}",
+      "preLaunchTask": "Start MARGEE Live Preview (attach)",
+      "postDebugTask": "Stop MARGEE Live Preview",
+      "presentation": {
+        "hidden": true, 
+      },
+    },
+  ],
 }

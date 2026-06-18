@@ -116,6 +116,10 @@ declare global {
     }
     export function create<T extends keyof HTMLElementTagNameMap>(tag: T): HTMLElementTagNameMap[T];
     interface HTMLElement {
+        /** @deprecated please use appendChild instead */
+        add<T extends HTMLElement>(child: T): T;
+        /** @deprecated please use appendChild instead */
+        add<T extends HTMLElement[]>(children: T): T;
         addClasses(...classNames: string[]): this;
         addStyles(styles: Partial<CSSStyleDeclaration>): this;
         set(objs: Partial<this>): this;
@@ -128,7 +132,7 @@ declare global {
         changeScreen(index: number): void;
         currentScreen(): number;
         screenNames(): string[];
-        getGomCB(uid: number, inst: number, callBack?: (value: Uint8Array) => void): void;
+        getGomCB(uid: number, inst: number, callBack?: (value?: Uint8Array) => void): void;
         getGom(uid: number, inst: number): Promise<Uint8Array | undefined>;
         setGomCB(uid: number, inst: number, data: Uint8Array | number, callBack?: (result: boolean) => void): void;
         setGom(uid: number, inst: number, data: Uint8Array | number): Promise<boolean>;

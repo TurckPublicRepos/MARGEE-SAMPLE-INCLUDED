@@ -19,6 +19,11 @@ export class GOM_STRING implements ELEMENT {
     this.label.innerHTML = _text;
 
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      if (!value) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
+        return;
+      }
+
       this.value.innerHTML = bufferToString(value, true);
     });
   }
@@ -43,6 +48,11 @@ export class GOM_INT implements ELEMENT {
     this.label.innerHTML = _text;
 
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      if (!value) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
+        return;
+      }
+
       this.value.innerHTML = `${fromBytesInt32(value)}`;
     });
   }
@@ -66,6 +76,11 @@ export class GOM_UINT implements ELEMENT {
     this.label.innerHTML = _text;
  
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      if (!value) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
+        return;
+      }
+
       this.value.innerHTML = `${fromBytesUint32(value)}`;
     });
   }
@@ -90,6 +105,11 @@ export class GOM_REAL implements ELEMENT {
     this.label.innerHTML = _text;
 
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      if (!value) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
+        return;
+      }
+
       this.value.innerHTML = `${fromBytesFloat(value)}`;
     });
   }
@@ -114,6 +134,11 @@ export class GOM_VERSION implements ELEMENT {
     this.label.innerHTML = _text;
 
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
+      if (!value || value.byteLength < 4) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
+        return;
+      }
+      
       this.value.innerHTML = `V${value[3]}.${value[2]}.${value[1]}.${value[0]}`;
     });
   }
@@ -138,8 +163,8 @@ export class GOM_MAC implements ELEMENT {
     this.label.innerHTML = _text;
 
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
-      if (value.byteLength < 6) {
-        this.value.innerHTML = `INVALID`;
+      if (!value || value.byteLength < 6) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
         return;
       }
       
@@ -169,8 +194,8 @@ export class GOM_IP implements ELEMENT {
     this.label.innerHTML = _text;
 
     HMI_RUNTIME.getGomCB(_uid, _inst, (value) => {
-      if (value.byteLength < 4) {
-        this.value.innerHTML = `INVALID`;
+      if (!value || value.byteLength < 4) {
+        this.value.innerHTML = 'FAILED TO RETRIEVE';
         return;
       }
       
