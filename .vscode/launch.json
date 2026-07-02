@@ -18,7 +18,7 @@
     }, 
     {
       "name": "HMI",
-      "type": "msedge",
+      "type": "chrome",
       "request": "launch",
       "url": "http://localhost:${config:MARGEE.Port}",
       "preLaunchTask": "Start MARGEE Live Preview",
@@ -26,7 +26,7 @@
     },
     {
       "name": "HMI (attach)",
-      "type": "msedge",
+      "type": "chrome",
       "request": "launch",
       "url": "http://localhost:${config:MARGEE.Port}",
       "preLaunchTask": "Start MARGEE Live Preview (attach)",
