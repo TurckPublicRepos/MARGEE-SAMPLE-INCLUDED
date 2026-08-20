@@ -1,5 +1,3 @@
-import '../../hmi_runtime'; 
-
 export class SIGN_IN implements ELEMENT {
   readonly root = create('div');
 

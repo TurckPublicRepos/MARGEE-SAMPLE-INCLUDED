@@ -1,5 +1,3 @@
-import '../../hmi_runtime'; 
-
 export class FORM implements ELEMENT {
   readonly root = create('div');
   readonly label = this.root.appendChild(create('div'));

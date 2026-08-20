@@ -1,5 +1,3 @@
-import '../../hmi_runtime'; 
-
 export class HMI_SCREEN implements CONTAINER_ELEMENT {
   readonly root = create('div');
   

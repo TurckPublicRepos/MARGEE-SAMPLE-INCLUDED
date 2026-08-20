@@ -1,5 +1,5 @@
 VAR_GLOBAL
-  gusiMachineRunning    : USINT;
+  gusiMachineRunning    : USINT := 1;
 
   gStTank1              : TANK;
   gStTank2              : TANK;
@@ -36,10 +36,10 @@ VAR_GLOBAL
 END_VAR
 
 VAR_ALIAS
-  ioOUTPUT_1            : ALIAS_IO(Output_Basic_Output_value_0);
-  ioOUTPUT_2            : ALIAS_IO(Output_Basic_Output_value_1);
-  ioOUTPUT_3            : ALIAS_IO(Output_Basic_Output_value_2);
-  ioOUTPUT_4            : ALIAS_IO(Output_Basic_Output_value_3);
+  ioOUTPUT_1            : ALIAS_IO(Output_Basic_DXP_Output_value_1);
+  ioOUTPUT_2            : ALIAS_IO(Output_Basic_DXP_Output_value_1);
+  ioOUTPUT_3            : ALIAS_IO(Output_Basic_DXP_Output_value_2);
+  ioOUTPUT_4            : ALIAS_IO(Output_Basic_DXP_Output_value_3);
 END_VAR
 
 TASK mainTask   

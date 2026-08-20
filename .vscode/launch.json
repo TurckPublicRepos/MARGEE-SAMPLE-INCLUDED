@@ -6,7 +6,8 @@
   "compounds": [
     {
       "name": "RUNTIME & HMI",
-      "configurations": ["RUNTIME", "HMI (attach)"]
+      "configurations": ["RUNTIME", "HMI (attach)"],
+      "stopAll": true
     }
   ],
   "configurations": [
@@ -21,16 +22,12 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:${config:MARGEE.Port}",
-      "preLaunchTask": "Start MARGEE Live Preview",
-      "postDebugTask": "Stop MARGEE Live Preview",
     },
     {
       "name": "HMI (attach)",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:${config:MARGEE.Port}",
-      "preLaunchTask": "Start MARGEE Live Preview (attach)",
-      "postDebugTask": "Stop MARGEE Live Preview",
       "presentation": {
         "hidden": true, 
       },

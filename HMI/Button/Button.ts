@@ -1,5 +1,3 @@
-import '../../hmi_runtime'; 
-
 export class BUTTON_MASSIVE_PRIMARY implements ELEMENT {
   readonly root = create('button').addClasses('BUTTON_STYLE_PRIMARY', "BUTTON_SIZE_MASSIVE");
   render(

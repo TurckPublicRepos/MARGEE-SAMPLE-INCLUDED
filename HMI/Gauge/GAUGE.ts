@@ -1,5 +1,3 @@
-import '../../hmi_runtime'; 
-
 export class GAUGE_PRIMARY implements ELEMENT {
   readonly root = create('div').addClasses('GAUGE');
   readonly title = this.root.appendChild(create('div'));

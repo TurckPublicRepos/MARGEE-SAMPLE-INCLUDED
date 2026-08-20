@@ -1,5 +1,3 @@
-import '../../hmi_runtime'; 
-
 export class BADGE_BLACK implements ELEMENT {
   readonly root = create('div').addClasses('BADGE');
   render(
